@@ -7,6 +7,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
@@ -10902,4 +10903,3 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
-
