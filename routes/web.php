@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.user');
+    return view('pages.user.home');
 });
+
+Route::get('/simulasi', 'User\SimulasiController@index');
+Route::post('/simulasi/processor', 'User\SimulasiController@processor');
 
 Auth::routes();
 
