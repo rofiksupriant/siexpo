@@ -1,6 +1,9 @@
 /node_modules
 /public/hot
 /public/storage
+/public/lte/*
+!/public/lte/dist
+!/public/lte/plugins
 /storage/*.key
 /vendor
 .env

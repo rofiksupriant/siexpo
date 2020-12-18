@@ -16,4 +16,17 @@ class Processor extends Model
         'updated_at',
         'created_at'
     ];
+
+    public static function brandDropdown()
+    {
+        return [
+            self::INTEL_BRAND => 'Intel',
+            self::AMD_BRAND => 'AMD'
+        ];
+    }
+
+    public function brandText()
+    {
+        return self::brandDropdown()[$this->brand];
+    }
 }
