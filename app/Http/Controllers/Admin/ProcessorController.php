@@ -66,7 +66,11 @@ class ProcessorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $processor = Processor::findOrFail($id);
+
+        $processor->brand_text = $processor->brandText();
+
+        return $processor;
     }
 
     /**
@@ -76,9 +80,23 @@ class ProcessorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name'  => 'required|string',
+            'price' => 'required|numeric',
+            'brand' => 'required|numeric'
+        ]);
+
+        $processor = Processor::findOrFail($request->id);
+
+        $processor->name = $request->name;
+        $processor->price = $request->price;
+        $processor->brand = $request->brand;
+
+        $processor->save();
+
+        return redirect('admin/processor');
     }
 
     /**
@@ -87,8 +105,10 @@ class ProcessorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Processor::findOrFail($id)->delete();
+
+        return redirect('admin/processor');
     }
 }

@@ -22,8 +22,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="{{ url('/admin', []) }}" class="nav-link {{$menu == 'Dashboard' ? 'active' : ''}}">
+          <li class="nav-item">
+            <a href="{{ url('/admin') }}" class="nav-link {{$menu == 'Dashboard' ? 'active' : ''}}">
               <p>
                 Dashboard
               </p>
@@ -38,27 +38,27 @@
             </a>
             <ul class="nav nav-treeview {{$parentMenu == 'Master Data' ? 'style="display: block;"' : ''}}" >
               <li class="nav-item">
-                <a href="{{ url('/admin/processor') }}" class="nav-link {{$menu == 'Processor' ? 'active' : ''}}">
+                <a href="{{ url('/admin/processor') }}" class="nav-link pl-4 {{$menu == 'Processor' ? 'active' : ''}}">
                   <p>Processor</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/motherboard') }}" class="nav-link {{$menu == 'Motherboard' ? 'active' : ''}}">
+                <a href="{{ url('/admin/motherboard') }}" class="nav-link pl-4 {{$menu == 'Motherboard' ? 'active' : ''}}">
                   <p>Motherboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/ram') }}" class="nav-link {{$menu == 'RAM' ? 'active' : ''}}">
+                <a href="{{ url('/admin/ram') }}" class="nav-link pl-4 {{$menu == 'RAM' ? 'active' : ''}}">
                   <p>RAM</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/ssd') }}" class="nav-link {{$menu == 'SSD' ? 'active' : ''}}">
+                <a href="{{ url('/admin/ssd') }}" class="nav-link pl-4 {{$menu == 'SSD' ? 'active' : ''}}">
                   <p>SSD</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/hdd') }}" class="nav-link {{$menu == 'HDD' ? 'active' : ''}}">
+                <a href="{{ url('/admin/hdd') }}" class="nav-link pl-4 {{$menu == 'HDD' ? 'active' : ''}}">
                   <p>HDD</p>
                 </a>
               </li>

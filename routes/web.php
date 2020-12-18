@@ -24,12 +24,11 @@ Route::post('/simulasi/processor', 'User\SimulasiController@processor');
 
 Auth::routes();
 
-Route::get('/admin', function () {
-    return view('layouts.admin');
-});
-
 Route::get('/admin/processor', 'Admin\ProcessorController@index')->name('processor');
 Route::post('/admin/create_processor', [ProcessorController::class, 'create']);
+Route::get('/admin/form_update_processor/{id}', [ProcessorController::class, 'edit']);
+Route::post('/admin/update_processor', [ProcessorController::class, 'update']);
+Route::post('/admin/delete_processor/{id}', [ProcessorController::class, 'delete']);
 
 Route::get('/admin', [HomeController::class, 'index'])->name('home');
 
