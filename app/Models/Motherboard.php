@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Motherboard extends Model
 {
     use HasFactory;
+
+    public function processor()
+    {
+        return $this->belongsTo(Processor::class, 'processor_id', 'id');
+    }
 }

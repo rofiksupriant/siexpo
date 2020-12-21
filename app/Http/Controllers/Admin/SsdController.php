@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Processor;
 use Illuminate\Http\Request;
 
-class ProcessorController extends Controller
+class SsdController extends Controller
 {
-    protected $route = "processor";
+    protected $route = "admin/processor";
 
     public function index()
     {
@@ -34,7 +34,7 @@ class ProcessorController extends Controller
         $processor->brand = $request->brand;
         $processor->save();
 
-        return redirect()->route($this->route);
+        return redirect($this->route);
     }
 
     public function edit($id)
@@ -46,7 +46,7 @@ class ProcessorController extends Controller
         return $processor;
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
             'name'  => 'required|string',
@@ -54,7 +54,7 @@ class ProcessorController extends Controller
             'brand' => 'required|numeric'
         ]);
 
-        $processor = Processor::findOrFail($id);
+        $processor = Processor::findOrFail($request->id);
 
         $processor->name = $request->name;
         $processor->price = $request->price;
@@ -62,13 +62,13 @@ class ProcessorController extends Controller
 
         $processor->save();
 
-        return redirect()->route($this->route);
+        return redirect('admin/processor');
     }
 
     public function delete($id)
     {
         Processor::findOrFail($id)->delete();
 
-        return redirect()->route($this->route);
+        return redirect('admin/processor');
     }
 }

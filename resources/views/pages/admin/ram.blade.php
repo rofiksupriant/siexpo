@@ -60,19 +60,19 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="create" action="{{ route('create_processor') }}" method="POST">
+                <form id="create-processor" action="{{ url('admin/create_processor') }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="name" class="col-form-label">Nama</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <label for="processor-name" class="col-form-label">Nama</label>
+                        <input type="text" class="form-control" id="processor-name" name="name">
                     </div>
                     <div class="form-group">
-                        <label for="price" class="col-form-label">Harga</label>                    
-                        <input type="number" class="form-control" id="price" name="price">
+                        <label for="processor-price" class="col-form-label">Harga</label>                    
+                        <input type="number" class="form-control" id="processor-price" name="price">
                     </div>
                     <div class="form-group">
-                        <label for="brand" class="col-form-label">Merek</label> 
-                        <select class="custom-select" id="brand" name="brand">
+                        <label for="processor-brand" class="col-form-label">Merek</label> 
+                        <select class="custom-select" id="processor-brand" name="brand">
                             <option selected>Pilih Merek</option>
                             @foreach ($brands as $key => $value)
                                 <option value="{{$key}}">{{$value}}</option>                              
@@ -83,7 +83,7 @@
                 <div class="row mt-5">
                     <button type="button" class="btn btn-primary" style="margin: 0 auto" 
                         onclick="event.preventDefault();
-                            document.getElementById('create').submit();"
+                            document.getElementById('create-processor').submit();"
                     >Simpan</button>
                 </div>
             </div>
@@ -102,19 +102,19 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="update" method="POST">
+                <form id="update-processor" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="name" class="col-form-label">Nama</label>
-                        <input type="text" class="form-control" id="name" name="name" value="">
+                        <label for="processor-name" class="col-form-label">Nama</label>
+                        <input type="text" class="form-control" id="processor-name" name="name" value="">
                     </div>
                     <div class="form-group">
-                        <label for="price" class="col-form-label">Harga</label>                    
-                        <input type="number" class="form-control" id="price" name="price" value="">
+                        <label for="processor-price" class="col-form-label">Harga</label>                    
+                        <input type="number" class="form-control" id="processor-price" name="price" value="">
                     </div>
                     <div class="form-group">
-                        <label for="brand" class="col-form-label">Merek</label> 
-                        <select class="custom-select" id="brand" name="brand">
+                        <label for="processor-brand" class="col-form-label">Merek</label> 
+                        <select class="custom-select" id="processor-brand" name="brand">
                             @foreach ($brands as $key => $value)
                                 <option value="{{$key}}">{{$value}}</option>                              
                             @endforeach
@@ -124,7 +124,7 @@
                 <div class="row mt-5">
                     <button type="button" class="btn btn-primary" style="margin: 0 auto" 
                         onclick="event.preventDefault();
-                            document.getElementById('update').submit();"
+                            document.getElementById('update-processor').submit();"
                     >Simpan</button>
                 </div>                
             </div>
@@ -138,8 +138,8 @@
     <script>
         $(document).on("click", "#updateAction", function () {
 
-        let id = $(this).data('id');
-        let routeUpdate = "{{ route('update_processor',":id") }}";
+        id = $(this).data('id');
+        var routeUpdate = "{{ route('update_processor',":id") }}";
         let url = "{{ route('form_update_processor',":id") }}";
 
         url = url.replace(':id',id);
@@ -154,10 +154,10 @@
             // },
             success: function (processor) {
                 console.log(routeUpdate);
-                $("#update #name").val(processor.name);
-                $("#update #price").val(processor.price);
-                $("#update #brand").val(processor.brand);
-                $("#update").get(0).setAttribute('action', routeUpdate);
+                $(".modal-body #processor-name").val(processor.name);
+                $(".modal-body #processor-price").val(processor.price);
+                $(".modal-body #processor-brand").val(processor.brand);
+                $("#update-processor").get(0).setAttribute('action', routeUpdate);
           }
         })
         

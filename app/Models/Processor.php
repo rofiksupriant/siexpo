@@ -29,4 +29,9 @@ class Processor extends Model
     {
         return self::brandDropdown()[$this->brand];
     }
+
+    public function motherboard()
+    {
+        return $this->hasMany(Motherboard::class, 'processor_id', 'id');
+    }
 }

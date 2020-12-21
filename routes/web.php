@@ -24,11 +24,52 @@ Route::post('/simulasi/processor', 'User\SimulasiController@processor');
 
 Auth::routes();
 
-Route::get('/admin/processor', 'Admin\ProcessorController@index')->name('processor');
-Route::post('/admin/create_processor', [ProcessorController::class, 'create']);
-Route::get('/admin/form_update_processor/{id}', [ProcessorController::class, 'edit']);
-Route::post('/admin/update_processor', [ProcessorController::class, 'update']);
-Route::post('/admin/delete_processor/{id}', [ProcessorController::class, 'delete']);
+Route::prefix('admin')->group(function () {
+
+    Route::prefix('master_data')->group(function () {
+
+        Route::prefix('processor')->group(function () {
+            Route::get('list',              [ProcessorController::class, 'index'])->name('processor');
+            Route::post('create',           [ProcessorController::class, 'create_processor'])->name('create_processor');
+            Route::get('form_update/{id}',  [ProcessorController::class, 'edit'])->name('form_update_processor');
+            Route::post('update/{id}',      [ProcessorController::class, 'update'])->name('update_processor');
+            Route::delete('delete/{id}',    [ProcessorController::class, 'delete'])->name('delete_processor');
+        });
+
+        Route::prefix('motherboard')->group(function () {
+            Route::get('list',              [ProcessorController::class, 'index'])->name('motherboard');
+            // Route::post('create',           [ProcessorController::class, 'create_processor'])->name('create_processor');
+            // Route::get('form_update/{id}',  [ProcessorController::class, 'edit'])->name('form_update_processor');
+            // Route::post('update',           [ProcessorController::class, 'update'])->name('update_processor');
+            // Route::delete('delete/{id}',    [ProcessorController::class, 'delete'])->name('delete_processor');
+        });
+
+        Route::prefix('ram')->group(function () {
+            Route::get('list',              [ProcessorController::class, 'index'])->name('ram');
+            // Route::post('create',           [ProcessorController::class, 'create_processor'])->name('create_processor');
+            // Route::get('form_update/{id}',  [ProcessorController::class, 'edit'])->name('form_update_processor');
+            // Route::post('update',           [ProcessorController::class, 'update'])->name('update_processor');
+            // Route::delete('delete/{id}',    [ProcessorController::class, 'delete'])->name('delete_processor');
+        });
+
+        Route::prefix('ssd')->group(function () {
+            Route::get('list',              [ProcessorController::class, 'index'])->name('ssd');
+            // Route::post('create',           [ProcessorController::class, 'create_processor'])->name('create_processor');
+            // Route::get('form_update/{id}',  [ProcessorController::class, 'edit'])->name('form_update_processor');
+            // Route::post('update',           [ProcessorController::class, 'update'])->name('update_processor');
+            // Route::delete('delete/{id}',    [ProcessorController::class, 'delete'])->name('delete_processor');
+        });
+
+        Route::prefix('hdd')->group(function () {
+            Route::get('list',              [ProcessorController::class, 'index'])->name('hdd');
+            // Route::post('create',           [ProcessorController::class, 'create_processor'])->name('create_processor');
+            // Route::get('form_update/{id}',  [ProcessorController::class, 'edit'])->name('form_update_processor');
+            // Route::post('update',           [ProcessorController::class, 'update'])->name('update_processor');
+            // Route::delete('delete/{id}',    [ProcessorController::class, 'delete'])->name('delete_processor');
+        });
+    });
+});
+
 
 Route::get('/admin', [HomeController::class, 'index'])->name('home');
 

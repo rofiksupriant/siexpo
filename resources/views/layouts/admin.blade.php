@@ -14,7 +14,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('lte/dist/css/adminlte.min.css')}}">
 
-  <link rel="stylesheet" href="{{asset('css/mystyle.css')}}">
+  <link rel="stylesheet" href="{{asset('css/admin-style.css')}}">
 </head>
 <!--
 `body` tag options:

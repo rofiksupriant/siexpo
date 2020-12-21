@@ -38,27 +38,27 @@
             </a>
             <ul class="nav nav-treeview {{$parentMenu == 'Master Data' ? 'style="display: block;"' : ''}}" >
               <li class="nav-item">
-                <a href="{{ url('/admin/processor') }}" class="nav-link pl-4 {{$menu == 'Processor' ? 'active' : ''}}">
+                <a href="{{ route('processor') }}" class="nav-link pl-4 {{$menu == 'Processor' ? 'active' : ''}}">
                   <p>Processor</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/motherboard') }}" class="nav-link pl-4 {{$menu == 'Motherboard' ? 'active' : ''}}">
+                <a href="{{ route('motherboard') }}" class="nav-link pl-4 {{$menu == 'Motherboard' ? 'active' : ''}}">
                   <p>Motherboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/ram') }}" class="nav-link pl-4 {{$menu == 'RAM' ? 'active' : ''}}">
+                <a href="{{ route('ram') }}" class="nav-link pl-4 {{$menu == 'RAM' ? 'active' : ''}}">
                   <p>RAM</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/ssd') }}" class="nav-link pl-4 {{$menu == 'SSD' ? 'active' : ''}}">
+                <a href="{{route('ssd')}}" class="nav-link pl-4 {{$menu == 'SSD' ? 'active' : ''}}">
                   <p>SSD</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/hdd') }}" class="nav-link pl-4 {{$menu == 'HDD' ? 'active' : ''}}">
+                <a href="{{route('hdd')}}" class="nav-link pl-4 {{$menu == 'HDD' ? 'active' : ''}}">
                   <p>HDD</p>
                 </a>
               </li>

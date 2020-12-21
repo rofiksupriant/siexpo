@@ -12,27 +12,27 @@
                     <tr>
                         <th>Nama</th>
                         <th>Harga</th>
-                        <th>Brand</th>
+                        <th>Processor</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($processors as $processor)
+                    @foreach ($motherboards as $motherboard)
                     <tr>
-                        <td>{{$processor->name}}</td>
-                        <td>{{$processor->price}}</td>
-                        <td>{{$processor->brandText()}}</td>
+                        <td>{{$motherboard->name}}</td>
+                        <td>{{$motherboard->price}}</td>
+                        <td>{{$motherboard->Processor->brandText()}}</td>
                         <td>
                             <div class="dropdown dropleft">
                                 <button class="btn btn-transparent text-muted p-0 border-0" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v" style="opacity: 0.5;"></i>
                                 </button>
                                 <div x-placement="bottom-end" class="dropdown-menu" >
-                                    <a id="updateAction" data-id={{$processor->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-edit"> Edit</i></a>
-                                    <a data-id={{$processor->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"
+                                    <a id="updateAction" data-id={{$motherboard->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-edit"> Edit</i></a>
+                                    <a data-id={{$motherboard->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"
                                          onclick="event.preventDefault(); document.getElementById('deleteAction').submit();"
                                         ><i class="fas fa-trash"> Delete</i>
                                     </a>
-                                    <form id="deleteAction" action="{{ route('delete_processor',$processor->id) }}" method="POST" >
+                                    <form id="deleteAction" action="{{ route('delete_processor',$motherboard->id) }}" method="POST" >
                                         @csrf
                                         @method('delete')
                                     </form>
@@ -43,7 +43,7 @@
                     @endforeach
                 </tbody>
                 <tfoot>
-                    {{ $processors->links() }}
+                    {{ $motherboards->links() }}
                 </tfoot>
             </table>
             </div>
@@ -60,7 +60,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="create" action="{{ route('create_processor') }}" method="POST">
+                <form id="create" action="{{ route('create_hdd') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="name" class="col-form-label">Nama</label>
@@ -71,9 +71,8 @@
                         <input type="number" class="form-control" id="price" name="price">
                     </div>
                     <div class="form-group">
-                        <label for="brand" class="col-form-label">Merek</label> 
+                        <label for="brand" class="col-form-label">Processor</label> 
                         <select class="custom-select" id="brand" name="brand">
-                            <option selected>Pilih Merek</option>
                             @foreach ($brands as $key => $value)
                                 <option value="{{$key}}">{{$value}}</option>                              
                             @endforeach
@@ -112,14 +111,6 @@
                         <label for="price" class="col-form-label">Harga</label>                    
                         <input type="number" class="form-control" id="price" name="price" value="">
                     </div>
-                    <div class="form-group">
-                        <label for="brand" class="col-form-label">Merek</label> 
-                        <select class="custom-select" id="brand" name="brand">
-                            @foreach ($brands as $key => $value)
-                                <option value="{{$key}}">{{$value}}</option>                              
-                            @endforeach
-                        </select>
-                    </div>
                 </form>
                 <div class="row mt-5">
                     <button type="button" class="btn btn-primary" style="margin: 0 auto" 
@@ -138,9 +129,9 @@
     <script>
         $(document).on("click", "#updateAction", function () {
 
-        let id = $(this).data('id');
-        let routeUpdate = "{{ route('update_processor',":id") }}";
-        let url = "{{ route('form_update_processor',":id") }}";
+        id = $(this).data('id');
+        var routeUpdate = "{{ route('update_hdd',":id") }}";
+        let url = "{{ route('form_update_hdd',":id") }}";
 
         url = url.replace(':id',id);
         routeUpdate = routeUpdate.replace(':id',id);
@@ -152,11 +143,10 @@
             // data: {
             //     _token: '{{ csrf_token() }}'
             // },
-            success: function (processor) {
+            success: function (motherboard) {
                 console.log(routeUpdate);
-                $("#update #name").val(processor.name);
-                $("#update #price").val(processor.price);
-                $("#update #brand").val(processor.brand);
+                $("#update #name").val(motherboard.name);
+                $("#update #price").val(motherboard.price);
                 $("#update").get(0).setAttribute('action', routeUpdate);
           }
         })

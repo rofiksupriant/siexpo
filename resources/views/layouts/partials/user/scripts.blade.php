@@ -1,5 +1,6 @@
-<script src="https://code.jquery.com/jquery-3.1.1.min.js">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-<script src="{{ asset('js/app.js') }}" defer></script>
+<!-- jQuery -->
+<script src="{{asset('lte/plugins/jquery/jquery.min.js')}}"></script>
+<!-- Bootstrap -->
+<script src="{{asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
 @stack('scripts')

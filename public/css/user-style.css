@@ -1,4 +1,3 @@
-/*
 body {
     font-family: 'Nunito';
     background-color: #E9E9E9;
@@ -31,15 +30,9 @@ body {
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 8px 6px -6px #999;
-
-
 }
+
 .container-bg {
     background-color: #FFFFFF;
     box-shadow: 0 1px 6px 1px #999;
-} */
-
-.dropdown-menu {
-    width: 75px !important;
-    /* height: 400px !important; */
 }
