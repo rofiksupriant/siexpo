@@ -12,7 +12,7 @@ class ProcessorController extends Controller
 
     public function index()
     {
-        $processors = Processor::paginate(15);
+        $processors = Processor::with('brand')->paginate(15);
         $parentMenu = "Master Data";
         $menu = "Processor";
         $brands = Processor::brandDropdown();
@@ -40,8 +40,6 @@ class ProcessorController extends Controller
     public function edit($id)
     {
         $processor = Processor::findOrFail($id);
-
-        $processor->brand_text = $processor->brandText();
 
         return $processor;
     }

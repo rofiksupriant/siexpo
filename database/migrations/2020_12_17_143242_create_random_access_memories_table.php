@@ -17,6 +17,7 @@ class CreateRandomAccessMemoriesTable extends Migration
             $table->id();
             $table->text('name');
             $table->integer('price');
+            $table->unsignedSmallInteger('brand_id')->nullable();
             $table->timestamps();
         });
     }

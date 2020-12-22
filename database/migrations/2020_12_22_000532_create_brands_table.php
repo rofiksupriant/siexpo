@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProcessorsTable extends Migration
+class CreateBrandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateProcessorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('processors', function (Blueprint $table) {
+        Schema::create('brands', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
-            $table->integer('price');
-            $table->tinyInteger('brand_id');
+            $table->string('name');
+            $table->integer('product_type')->comment('1:processor, 2:motherboard, etc..');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateProcessorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('processors');
+        Schema::dropIfExists('brands');
     }
 }

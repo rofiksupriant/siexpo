@@ -20,7 +20,7 @@
                     <tr>
                         <td>{{$processor->name}}</td>
                         <td>{{$processor->price}}</td>
-                        <td>{{$processor->brandText()}}</td>
+                        <td>{{$processor->brand->name}}</td>
                         <td>
                             <div class="dropdown dropleft">
                                 <button class="btn btn-transparent text-muted p-0 border-0" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -74,8 +74,8 @@
                         <label for="brand" class="col-form-label">Merek</label> 
                         <select class="custom-select" id="brand" name="brand">
                             <option selected>Pilih Merek</option>
-                            @foreach ($brands as $key => $value)
-                                <option value="{{$key}}">{{$value}}</option>                              
+                            @foreach ($brands as $brand)
+                                <option value="{{$brand->id}}">{{$brand->name}}</option>                              
                             @endforeach
                         </select>
                     </div>
@@ -115,8 +115,8 @@
                     <div class="form-group">
                         <label for="brand" class="col-form-label">Merek</label> 
                         <select class="custom-select" id="brand" name="brand">
-                            @foreach ($brands as $key => $value)
-                                <option value="{{$key}}">{{$value}}</option>                              
+                            @foreach ($brands as $brand)
+                                <option value="{{$brand->id}}">{{$brand->name}}</option>                              
                             @endforeach
                         </select>
                     </div>
@@ -156,7 +156,7 @@
                 console.log(routeUpdate);
                 $("#update #name").val(processor.name);
                 $("#update #price").val(processor.price);
-                $("#update #brand").val(processor.brand);
+                $("#update #brand").val(processor.brand_id);
                 $("#update").get(0).setAttribute('action', routeUpdate);
           }
         })

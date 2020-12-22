@@ -11,28 +11,26 @@
                 <thead>
                     <tr>
                         <th>Nama</th>
-                        <th>Harga</th>
-                        <th>Kompatibilitas Processor</th>
+                        <th>Jenis Produk</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($motherboards as $motherboard)
+                    @foreach ($brands as $brand)
                     <tr>
-                        <td>{{$motherboard->name}}</td>
-                        <td>{{$motherboard->price}}</td>
-                        <td>{{$motherboard->Processor->brandText()}}</td>
+                        <td>{{$brand->name}}</td>
+                        <td>{{$brand->productTypeText()}}</td>
                         <td>
                             <div class="dropdown dropleft">
                                 <button class="btn btn-transparent text-muted p-0 border-0" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v" style="opacity: 0.5;"></i>
                                 </button>
                                 <div x-placement="bottom-end" class="dropdown-menu" >
-                                    <a id="updateAction" data-id={{$motherboard->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-edit"> Edit</i></a>
-                                    <a data-id={{$motherboard->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"
+                                    <a id="updateAction" data-id={{$brand->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-edit"> Edit</i></a>
+                                    <a data-id={{$brand->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"
                                          onclick="event.preventDefault(); document.getElementById('deleteAction').submit();"
                                         ><i class="fas fa-trash"> Delete</i>
                                     </a>
-                                    <form id="deleteAction" action="{{ route('delete_processor',$motherboard->id) }}" method="POST" >
+                                    <form id="deleteAction" action="{{ route('delete_brand',$brand->id) }}" method="POST" >
                                         @csrf
                                         @method('delete')
                                     </form>
@@ -43,7 +41,7 @@
                     @endforeach
                 </tbody>
                 <tfoot>
-                    {{ $motherboards->links() }}
+                    {{ $brands->links() }}
                 </tfoot>
             </table>
             </div>
@@ -60,20 +58,17 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="create" action="{{ route('create_motherboard') }}" method="POST">
+                <form id="create" action="{{ route('create_brand') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="name" class="col-form-label">Nama</label>
                         <input type="text" class="form-control" id="name" name="name">
                     </div>
                     <div class="form-group">
-                        <label for="price" class="col-form-label">Harga</label>                    
-                        <input type="number" class="form-control" id="price" name="price">
-                    </div>
-                    <div class="form-group">
-                        <label for="brand" class="col-form-label">Kompatibilitas Processor</label> 
-                        <select class="custom-select" id="brand" name="brand">
-                            @foreach ($brands as $key => $value)
+                        <label for="product_type" class="col-form-label">Jenis Product</label> 
+                        <select class="custom-select" id="product_type" name="product_type">
+                            <option value="">Pilih Jenis Produk</option>                              
+                            @foreach ($products as $key => $value)
                                 <option value="{{$key}}">{{$value}}</option>                              
                             @endforeach
                         </select>
@@ -108,8 +103,13 @@
                         <input type="text" class="form-control" id="name" name="name" value="">
                     </div>
                     <div class="form-group">
-                        <label for="price" class="col-form-label">Harga</label>                    
-                        <input type="number" class="form-control" id="price" name="price" value="">
+                        <label for="product_type" class="col-form-label">Jenis Product</label> 
+                        <select class="custom-select" id="product_type" name="product_type">
+                            <option value="">Pilih Jenis Produk</option>                              
+                            @foreach ($products as $key => $value)
+                                <option value="{{$key}}">{{$value}}</option>                              
+                            @endforeach
+                        </select>
                     </div>
                 </form>
                 <div class="row mt-5">
@@ -130,8 +130,8 @@
         $(document).on("click", "#updateAction", function () {
 
         id = $(this).data('id');
-        var routeUpdate = "{{ route('update_motherboard',":id") }}";
-        let url = "{{ route('form_update_motherboard',":id") }}";
+        var routeUpdate = "{{ route('update_brand',":id") }}";
+        let url = "{{ route('form_update_brand',":id") }}";
 
         url = url.replace(':id',id);
         routeUpdate = routeUpdate.replace(':id',id);
@@ -143,10 +143,10 @@
             // data: {
             //     _token: '{{ csrf_token() }}'
             // },
-            success: function (motherboard) {
+            success: function (brand) {
                 console.log(routeUpdate);
-                $("#update #name").val(motherboard.name);
-                $("#update #price").val(motherboard.price);
+                $("#update #name").val(brand.name);
+                $("#update #product_type").val(brand.product_type);
                 $("#update").get(0).setAttribute('action', routeUpdate);
           }
         })

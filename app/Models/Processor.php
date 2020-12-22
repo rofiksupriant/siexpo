@@ -9,9 +9,6 @@ class Processor extends Model
 {
     use HasFactory;
 
-    const INTEL_BRAND = 1;
-    const AMD_BRAND = 2;
-
     protected $hidden = [
         'updated_at',
         'created_at'
@@ -19,19 +16,18 @@ class Processor extends Model
 
     public static function brandDropdown()
     {
-        return [
-            self::INTEL_BRAND => 'Intel',
-            self::AMD_BRAND => 'AMD'
-        ];
+        $brands = Brand::where('product_type', Brand::PROCESSOR)->get();
+
+        return $brands;
     }
 
-    public function brandText()
+    public function motherboards()
     {
-        return self::brandDropdown()[$this->brand];
+        return $this->hasMany(Motherboard::class, 'processor_brand_id', 'brand_id');
     }
 
-    public function motherboard()
+    public function brand()
     {
-        return $this->hasMany(Motherboard::class, 'processor_id', 'id');
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
 }

@@ -38,6 +38,11 @@
             </a>
             <ul class="nav nav-treeview {{$parentMenu == 'Master Data' ? 'style="display: block;"' : ''}}" >
               <li class="nav-item">
+                <a href="{{ route('brand') }}" class="nav-link pl-4 {{$menu == 'Brand' ? 'active' : ''}}">
+                  <p>Brand</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{ route('processor') }}" class="nav-link pl-4 {{$menu == 'Processor' ? 'active' : ''}}">
                   <p>Processor</p>
                 </a>

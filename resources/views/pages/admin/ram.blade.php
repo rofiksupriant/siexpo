@@ -12,27 +12,27 @@
                     <tr>
                         <th>Nama</th>
                         <th>Harga</th>
-                        <th>Brand</th>
+                        <th>Processor</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($processors as $processor)
+                    @foreach ($motherboards as $motherboard)
                     <tr>
-                        <td>{{$processor->name}}</td>
-                        <td>{{$processor->price}}</td>
-                        <td>{{$processor->brandText()}}</td>
+                        <td>{{$motherboard->name}}</td>
+                        <td>{{$motherboard->price}}</td>
+                        <td>{{$motherboard->Processor->brandText()}}</td>
                         <td>
                             <div class="dropdown dropleft">
                                 <button class="btn btn-transparent text-muted p-0 border-0" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v" style="opacity: 0.5;"></i>
                                 </button>
                                 <div x-placement="bottom-end" class="dropdown-menu" >
-                                    <a id="updateAction" data-id={{$processor->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-edit"> Edit</i></a>
-                                    <a data-id={{$processor->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"
+                                    <a id="updateAction" data-id={{$motherboard->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-edit"> Edit</i></a>
+                                    <a data-id={{$motherboard->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"
                                          onclick="event.preventDefault(); document.getElementById('deleteAction').submit();"
                                         ><i class="fas fa-trash"> Delete</i>
                                     </a>
-                                    <form id="deleteAction" action="{{ route('delete_processor',$processor->id) }}" method="POST" >
+                                    <form id="deleteAction" action="{{ route('delete_processor',$motherboard->id) }}" method="POST" >
                                         @csrf
                                         @method('delete')
                                     </form>
@@ -43,7 +43,7 @@
                     @endforeach
                 </tbody>
                 <tfoot>
-                    {{ $processors->links() }}
+                    {{ $motherboards->links() }}
                 </tfoot>
             </table>
             </div>
@@ -60,20 +60,19 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="create-processor" action="{{ url('admin/create_processor') }}" method="POST">
+                <form id="create" action="{{ route('create_motherboard') }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="processor-name" class="col-form-label">Nama</label>
-                        <input type="text" class="form-control" id="processor-name" name="name">
+                        <label for="name" class="col-form-label">Nama</label>
+                        <input type="text" class="form-control" id="name" name="name">
                     </div>
                     <div class="form-group">
-                        <label for="processor-price" class="col-form-label">Harga</label>                    
-                        <input type="number" class="form-control" id="processor-price" name="price">
+                        <label for="price" class="col-form-label">Harga</label>                    
+                        <input type="number" class="form-control" id="price" name="price">
                     </div>
                     <div class="form-group">
-                        <label for="processor-brand" class="col-form-label">Merek</label> 
-                        <select class="custom-select" id="processor-brand" name="brand">
-                            <option selected>Pilih Merek</option>
+                        <label for="brand" class="col-form-label">Kompatibilitas Processor</label> 
+                        <select class="custom-select" id="brand" name="brand">
                             @foreach ($brands as $key => $value)
                                 <option value="{{$key}}">{{$value}}</option>                              
                             @endforeach
@@ -83,7 +82,7 @@
                 <div class="row mt-5">
                     <button type="button" class="btn btn-primary" style="margin: 0 auto" 
                         onclick="event.preventDefault();
-                            document.getElementById('create-processor').submit();"
+                            document.getElementById('create').submit();"
                     >Simpan</button>
                 </div>
             </div>
@@ -102,29 +101,21 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="update-processor" method="POST">
+                <form id="update" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="processor-name" class="col-form-label">Nama</label>
-                        <input type="text" class="form-control" id="processor-name" name="name" value="">
+                        <label for="name" class="col-form-label">Nama</label>
+                        <input type="text" class="form-control" id="name" name="name" value="">
                     </div>
                     <div class="form-group">
-                        <label for="processor-price" class="col-form-label">Harga</label>                    
-                        <input type="number" class="form-control" id="processor-price" name="price" value="">
-                    </div>
-                    <div class="form-group">
-                        <label for="processor-brand" class="col-form-label">Merek</label> 
-                        <select class="custom-select" id="processor-brand" name="brand">
-                            @foreach ($brands as $key => $value)
-                                <option value="{{$key}}">{{$value}}</option>                              
-                            @endforeach
-                        </select>
+                        <label for="price" class="col-form-label">Harga</label>                    
+                        <input type="number" class="form-control" id="price" name="price" value="">
                     </div>
                 </form>
                 <div class="row mt-5">
                     <button type="button" class="btn btn-primary" style="margin: 0 auto" 
                         onclick="event.preventDefault();
-                            document.getElementById('update-processor').submit();"
+                            document.getElementById('update').submit();"
                     >Simpan</button>
                 </div>                
             </div>
@@ -139,8 +130,8 @@
         $(document).on("click", "#updateAction", function () {
 
         id = $(this).data('id');
-        var routeUpdate = "{{ route('update_processor',":id") }}";
-        let url = "{{ route('form_update_processor',":id") }}";
+        var routeUpdate = "{{ route('update_motherboard',":id") }}";
+        let url = "{{ route('form_update_motherboard',":id") }}";
 
         url = url.replace(':id',id);
         routeUpdate = routeUpdate.replace(':id',id);
@@ -152,12 +143,11 @@
             // data: {
             //     _token: '{{ csrf_token() }}'
             // },
-            success: function (processor) {
+            success: function (motherboard) {
                 console.log(routeUpdate);
-                $(".modal-body #processor-name").val(processor.name);
-                $(".modal-body #processor-price").val(processor.price);
-                $(".modal-body #processor-brand").val(processor.brand);
-                $("#update-processor").get(0).setAttribute('action', routeUpdate);
+                $("#update #name").val(motherboard.name);
+                $("#update #price").val(motherboard.price);
+                $("#update").get(0).setAttribute('action', routeUpdate);
           }
         })
         

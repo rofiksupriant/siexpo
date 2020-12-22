@@ -9,8 +9,13 @@ class Motherboard extends Model
 {
     use HasFactory;
 
-    public function processor()
+    public function processors()
     {
-        return $this->belongsTo(Processor::class, 'processor_id', 'id');
+        return $this->belongsToMany(Processor::class, 'processor_brand', 'brand');
+    }
+
+    public function processorBrandText()
+    {
+        return Processor::brandDropdown()[$this->processor_brand];
     }
 }

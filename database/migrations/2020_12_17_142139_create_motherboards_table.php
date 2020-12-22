@@ -17,7 +17,8 @@ class CreateMotherboardsTable extends Migration
             $table->id();
             $table->text('name');
             $table->integer('price');
-            $table->foreignId('processor_id')->constrained('processors');
+            $table->unsignedSmallInteger('brand_id')->nullable();
+            $table->smallInteger('processor_brand_id');
             $table->timestamps();
         });
     }
