@@ -4,36 +4,40 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\HardDiskDrive;
-use App\Models\Processor;
 use Illuminate\Http\Request;
 
 class HddController extends Controller
 {
-    protected $route = "admin/processor";
+    protected $route = "hdd";
 
     public function index()
     {
-        $hardDisks = HardDiskDrive::paginate(10);
-
+        $hardDisks  = HardDiskDrive::with('brand')->orderBy('created_at','desc')->paginate(10);
         $parentMenu = "Master Data";
-        $menu = "Processor";
+        $menu       = "HDD";
+        $brands     = HardDiskDrive::brandDropdown();
 
-        return view('pages.admin.processor', compact('hardDisks', 'menu', 'parentMenu'));
+        return view('pages.admin.hdd', compact('hardDisks', 'menu', 'brands', 'parentMenu'));
     }
 
     public function create(Request $request)
     {
         $request->validate([
-            'name'  => 'required|string',
-            'price' => 'required|numeric',
+            'name'     => 'required|string',
+            'capacity' => 'required|numeric',
+            'price'    => 'required|numeric',
+            'brand_id' => 'nullable|exists:brands,id'
         ]);
 
         $hardDisk = new HardDiskDrive();
-        $hardDisk->name = $request->name;
-        $hardDisk->price = $request->price;
+
+        $hardDisk->name     = $request->name;
+        $hardDisk->capacity = $request->capacity;
+        $hardDisk->price    = $request->price;
+        $hardDisk->brand_id = $request->brand_id;
         $hardDisk->save();
 
-        return redirect($this->route);
+        return redirect()->route($this->route);
     }
 
     public function edit($id)
@@ -46,24 +50,28 @@ class HddController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'name'  => 'required|string',
-            'price' => 'required|numeric',
+            'name'     => 'required|string',
+            'capacity' => 'required|numeric',
+            'price'    => 'required|numeric',
+            'brand_id' => 'nullable|numeric|exists:brands,id'
         ]);
 
         $hardDisk = HardDiskDrive::findOrFail($request->id);
 
-        $hardDisk->name = $request->name;
-        $hardDisk->price = $request->price;
+        $hardDisk->name     = $request->name;
+        $hardDisk->capacity = $request->capacity;
+        $hardDisk->price    = $request->price;
+        $hardDisk->brand_id = $request->brand_id;
 
         $hardDisk->save();
 
-        return redirect($this->route);
+        return redirect()->route($this->route);
     }
 
     public function delete($id)
     {
         HardDiskDrive::findOrFail($id)->delete();
 
-        return redirect($this->route);
+        return redirect()->route($this->route);
     }
 }

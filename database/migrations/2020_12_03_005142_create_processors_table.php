@@ -17,7 +17,7 @@ class CreateProcessorsTable extends Migration
             $table->id();
             $table->text('name');
             $table->integer('price');
-            $table->tinyInteger('brand_id');
+            $table->bigInteger('brand_id');
             $table->timestamps();
         });
     }

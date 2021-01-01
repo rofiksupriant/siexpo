@@ -26,29 +26,24 @@
                                 </button>
                                 <div x-placement="bottom-end" class="dropdown-menu" >
                                     <a id="updateAction" data-id={{$brand->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-edit"> Edit</i></a>
-                                    <a data-id={{$brand->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"
-                                         onclick="event.preventDefault(); document.getElementById('deleteAction').submit();"
-                                        ><i class="fas fa-trash"> Delete</i>
-                                    </a>
-                                    <form id="deleteAction" action="{{ route('delete_brand',$brand->id) }}" method="POST" >
-                                        @csrf
-                                        @method('delete')
-                                    </form>
+                                    <a id="deleteAction" data-id={{$brand->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-trash"> Delete</i></a>
                                 </div>
                             </div>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
-                    {{ $brands->links() }}
-                </tfoot>
             </table>
+            <div class="d-flex">
+                <div class="mx-auto mt-5">
+                    {{ $brands->links('pagination::bootstrap-4') }}
+                </div>
+                </div>
             </div>
         </div>
     </div>
 
-    {{-- create modal start--}}
+    {{-- create modal --}}
     <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -62,11 +57,11 @@
                     @csrf
                     <div class="form-group">
                         <label for="name" class="col-form-label">Nama</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <input type="text" class="form-control name" name="name">
                     </div>
                     <div class="form-group">
                         <label for="product_type" class="col-form-label">Jenis Product</label> 
-                        <select class="custom-select" id="product_type" name="product_type">
+                        <select class="custom-select product_type" name="product_type">
                             <option value="">Pilih Jenis Produk</option>                              
                             @foreach ($products as $key => $value)
                                 <option value="{{$key}}">{{$value}}</option>                              
@@ -84,9 +79,8 @@
             </div>
         </div>
     </div>
-    {{-- create modal end--}}
 
-    {{-- update modal start--}}
+    {{-- update modal --}}
     <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -100,11 +94,11 @@
                     @csrf
                     <div class="form-group">
                         <label for="name" class="col-form-label">Nama</label>
-                        <input type="text" class="form-control" id="name" name="name" value="">
+                        <input type="text" class="form-control name" name="name" value="">
                     </div>
                     <div class="form-group">
                         <label for="product_type" class="col-form-label">Jenis Product</label> 
-                        <select class="custom-select" id="product_type" name="product_type">
+                        <select class="custom-select product_type" name="product_type">
                             <option value="">Pilih Jenis Produk</option>                              
                             @foreach ($products as $key => $value)
                                 <option value="{{$key}}">{{$value}}</option>                              
@@ -122,7 +116,13 @@
             </div>
         </div>
     </div>
-    {{-- update modal end--}}
+
+    {{-- delete form --}}
+    <form id="delete" action="" method="POST" >
+        @csrf
+        @method('delete')
+    </form>
+
 @endsection
 
 @push('script')
@@ -144,14 +144,24 @@
             //     _token: '{{ csrf_token() }}'
             // },
             success: function (brand) {
-                console.log(routeUpdate);
-                $("#update #name").val(brand.name);
-                $("#update #product_type").val(brand.product_type);
+                $("#update .name").val(brand.name);
+                $("#update .product_type").val(brand.product_type);
+                $("#update").get(0).setAttribute('action', routeUpdate);
                 $("#update").get(0).setAttribute('action', routeUpdate);
           }
         })
         
         $('#updateModal').modal('show');
+    });
+
+    $(document).on("click", "#deleteAction", function () {
+
+        id = $(this).data('id');
+        var routeDelete = "{{ route('delete_brand',":id") }}";
+        routeDelete = routeDelete.replace(':id',id);
+
+        $("#delete").get(0).setAttribute('action', routeDelete);
+        $("#delete").submit();
     });
 
     </script>

@@ -20,6 +20,7 @@ class Brand extends Model
     const KEYBOARD    = 8;
     const VGA         = 9;
     const PSU         = 10;
+    const MOUSE_PAD   = 11;
 
     protected $hidden = [
         'updated_at',

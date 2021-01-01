@@ -1,0 +1,42 @@
+[
+    {
+        "name": "WDC 320GB SATA2 8MB - Used & Garansi 1 Th",
+        "price": 150000
+    },
+    {
+        "name": "Seagate 320GB SATA2 - Used & Garansi 1 Tahun",
+        "price": 155000
+    },
+    {
+        "name": "Seagate 500GB SATA2 - Garansi Distributor",
+        "price": 200000
+    },
+    {
+        "name": "WDC 500GB SATA2 - Blue - Used & Garansi 1 Th",
+        "price": 225000
+    },
+    {
+        "name": "WDC 1TB SATA3 64MB - Caviar Blue - WD10EZEX - Garansi 2 Th",
+        "price": 650000
+    },
+    {
+        "name": "Seagate 1TB SATA3 - ST100DM003 Garansi 1 Tahun",
+        "price": 675000
+    },
+    {
+        "name": "WDC 2TB SATA3 64MB - Caviar Blue - WD20EZRZ - Garansi 2 Th",
+        "price": 900000
+    },
+    {
+        "name": "Seagate 2TB SATA3 - 7200 RPM Grs 1 Tahun",
+        "price": 900000
+    },
+    {
+        "name": "Seagate 4TB SATA3 - Grs 1 Tahun",
+        "price": 1500000
+    },
+    {
+        "name": "WDC 4TB SATA3 64MB - Caviar Red - WD40EFRX (For NAS) - Garansi 3 Th",
+        "price": 1750000
+    }
+]

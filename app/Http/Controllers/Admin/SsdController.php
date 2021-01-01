@@ -3,72 +3,75 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Processor;
+use App\Models\SolidStateDrive;
 use Illuminate\Http\Request;
 
 class SsdController extends Controller
 {
-    protected $route = "admin/processor";
+    protected $route = "ssd";
 
     public function index()
     {
-        $processors = Processor::paginate(15);
+        $ssds       = SolidStateDrive::with('brand')->orderBy('created_at','desc')->paginate(10);
         $parentMenu = "Master Data";
-        $menu = "Processor";
-        $brands = Processor::brandDropdown();
+        $menu       = "SSD";
+        $brands     = SolidStateDrive::brandDropdown();
 
-        return view('pages.admin.processor', compact('processors', 'menu', 'brands', 'parentMenu'));
+        return view('pages.admin.ssd', compact('ssds', 'menu', 'brands', 'parentMenu'));
     }
 
     public function create(Request $request)
     {
         $request->validate([
-            'name'  => 'required|string',
-            'price' => 'required|numeric',
-            'brand' => 'required|numeric'
+            'name'     => 'required|string',
+            'price'    => 'required|numeric',
+            'capacity' => 'required|numeric',
+            'brand_id' => 'nullable|exists:brands,id'
         ]);
 
-        $processor = new Processor();
-        $processor->name = $request->name;
-        $processor->price = $request->price;
-        $processor->brand = $request->brand;
-        $processor->save();
+        $ssd = new SolidStateDrive();
 
-        return redirect($this->route);
+        $ssd->name     = $request->name;
+        $ssd->price    = $request->price;
+        $ssd->capacity = $request->capacity;
+        $ssd->brand_id = $request->brand_id;
+        $ssd->save();
+
+        return redirect()->route($this->route);
     }
 
     public function edit($id)
     {
-        $processor = Processor::findOrFail($id);
+        $ssd = SolidStateDrive::findOrFail($id);
 
-        $processor->brand_text = $processor->brandText();
-
-        return $processor;
+        return $ssd;
     }
 
     public function update(Request $request)
     {
         $request->validate([
-            'name'  => 'required|string',
-            'price' => 'required|numeric',
-            'brand' => 'required|numeric'
+            'name'     => 'required|string',
+            'price'    => 'required|numeric',
+            'capacity' => 'required|numeric',
+            'brand_id' => 'nullable|numeric|exists:brands,id'
         ]);
 
-        $processor = Processor::findOrFail($request->id);
+        $ssd = SolidStateDrive::findOrFail($request->id);
 
-        $processor->name = $request->name;
-        $processor->price = $request->price;
-        $processor->brand = $request->brand;
+        $ssd->name     = $request->name;
+        $ssd->price    = $request->price;
+        $ssd->capacity = $request->capacity;
+        $ssd->brand_id = $request->brand_id;
 
-        $processor->save();
+        $ssd->save();
 
-        return redirect('admin/processor');
+        return redirect()->route($this->route);
     }
 
     public function delete($id)
     {
-        Processor::findOrFail($id)->delete();
+        SolidStateDrive::findOrFail($id)->delete();
 
-        return redirect('admin/processor');
+        return redirect()->route($this->route);
     }
 }

@@ -20,7 +20,7 @@
                     <tr>
                         <td>{{$processor->name}}</td>
                         <td>{{$processor->price}}</td>
-                        <td>{{$processor->brand->name}}</td>
+                        <td>{{$processor->brand?$processor->brand->name:"-"}}</td>
                         <td>
                             <div class="dropdown dropleft">
                                 <button class="btn btn-transparent text-muted p-0 border-0" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -28,24 +28,19 @@
                                 </button>
                                 <div x-placement="bottom-end" class="dropdown-menu" >
                                     <a id="updateAction" data-id={{$processor->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-edit"> Edit</i></a>
-                                    <a data-id={{$processor->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"
-                                         onclick="event.preventDefault(); document.getElementById('deleteAction').submit();"
-                                        ><i class="fas fa-trash"> Delete</i>
-                                    </a>
-                                    <form id="deleteAction" action="{{ route('delete_processor',$processor->id) }}" method="POST" >
-                                        @csrf
-                                        @method('delete')
-                                    </form>
+                                    <a id="deleteAction" data-id={{$processor->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-trash"> Delete</i></a>
                                 </div>
                             </div>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
-                    {{ $processors->links() }}
-                </tfoot>
             </table>
+            <div class="d-flex">
+                <div class="mx-auto mt-5">
+                    {{ $processors->links('pagination::bootstrap-4') }}
+                </div>
+                </div>
             </div>
         </div>
     </div>
@@ -72,7 +67,7 @@
                     </div>
                     <div class="form-group">
                         <label for="brand" class="col-form-label">Merek</label> 
-                        <select class="custom-select" id="brand" name="brand">
+                        <select class="custom-select" id="brand" name="brand_id">
                             <option selected>Pilih Merek</option>
                             @foreach ($brands as $brand)
                                 <option value="{{$brand->id}}">{{$brand->name}}</option>                              
@@ -114,7 +109,7 @@
                     </div>
                     <div class="form-group">
                         <label for="brand" class="col-form-label">Merek</label> 
-                        <select class="custom-select" id="brand" name="brand">
+                        <select class="custom-select" id="brand" name="brand_id">
                             @foreach ($brands as $brand)
                                 <option value="{{$brand->id}}">{{$brand->name}}</option>                              
                             @endforeach
@@ -132,6 +127,12 @@
         </div>
     </div>
     {{-- update modal end--}}
+        
+    {{-- delete form --}}
+    <form id="delete" action="" method="POST" >
+        @csrf
+        @method('delete')
+    </form>
 @endsection
 
 @push('script')
@@ -162,6 +163,15 @@
         })
         
         $('#updateModal').modal('show');
+    });
+        
+    $(document).on("click", "#deleteAction", function () {
+        id = $(this).data('id');
+        var routeDelete = "{{ route('delete_processor',":id") }}";
+        routeDelete = routeDelete.replace(':id',id);
+
+        $("#delete").get(0).setAttribute('action', routeDelete);
+        $("#delete").submit();
     });
 
     </script>

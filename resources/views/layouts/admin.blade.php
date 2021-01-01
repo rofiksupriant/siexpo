@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('lte/dist/css/adminlte.min.css')}}">
-
   <link rel="stylesheet" href="{{asset('css/admin-style.css')}}">
 </head>
 <!--
@@ -25,7 +24,7 @@
   * sidebar-collapse
   * sidebar-mini
 -->
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" style="background-color: #d9dbde">
 <div class="wrapper">
   <!-- Navbar -->
   @include('layouts.partials.admin.navbar')
@@ -35,7 +34,7 @@
   @include('layouts.partials.admin.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper mt-5">
+  <div class="content-wrapper mt-2" style="background-color: #d9dbde">
     <!-- Content Header (Page header) -->
     @include('layouts.partials.admin.header')
     <!-- /.content-header -->

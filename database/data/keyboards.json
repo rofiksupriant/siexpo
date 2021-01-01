@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Logitech Classic keyboard K120 Black USB",
+        "price": 110000
+    },
+    {
+        "name": "Logitech Multimedia Keyboard K200 Black USB",
+        "price": 130000
+    },
+    {
+        "name": "Logitech Wireless Desktop MK240 Nano",
+        "price": 275000
+    },
+    {
+        "name": "Logitech Keyboard K400 Plus Wireless",
+        "price": 425000
+    },
+    {
+        "name": "Genius Keyboard Gaming Scorpion K220 Backlight",
+        "price": 155000
+    },
+    {
+        "name": "Rexus Keyboard + Mouse + Mousepad Gaming Rexus Warfaction VR1",
+        "price": 215000
+    },
+    {
+        "name": "Digital Alliance Keyboard Meca Warrior X RGB V2 - Gaming Keyboard",
+        "price": 410000
+    },
+    {
+        "name": "Logitech G213 Prodigy Gaming Keyboard",
+        "price": 625000
+    },
+    {
+        "name": "Tecware Phantom 87 RGB (Mechanical Outemu BROWN Switches)",
+        "price": 650000
+    },
+    {
+        "name": "SteelSeries Apex 3 - Gaming Keyboard",
+        "price": 1125000
+    },
+    {
+        "name": "Keyboard Corsair Vengeance K68 (Cherry MX Red, Red Backlight)",
+        "price": 1175000
+    },
+    {
+        "name": "MSI Gaming Keyboard - Vigor GK70 CR US",
+        "price": 1675000
+    },
+    {
+        "name": "ASUS ROG STRIX SCOPE Mechanical Gaming Keyboard",
+        "price": 2350000
+    },
+    {
+        "name": "ASUS ROG Strix Flare Pink Cherry MX Red Mechanical Keyboard",
+        "price": 2950000
+    },
+    {
+        "name": "Corsair K100 RGB Optical-Mechanical Gaming Keyboard",
+        "price": 3500000
+    }
+]

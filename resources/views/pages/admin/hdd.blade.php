@@ -11,14 +11,18 @@
                 <thead>
                     <tr>
                         <th>Nama</th>
+                        <th>Kapasitas</th>
                         <th>Harga</th>
+                        <th>Merek</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($hardDisks as $hardDisk)
                     <tr>
                         <td>{{$hardDisk->name}}</td>
+                        <td>{{$hardDisk->capacity}}</td>
                         <td>{{$hardDisk->price}}</td>
+                        <td>{{$hardDisk->brand?$hardDisk->brand->name:"-"}}</td>
                         <td>
                             <div class="dropdown dropleft">
                                 <button class="btn btn-transparent text-muted p-0 border-0" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -26,29 +30,24 @@
                                 </button>
                                 <div x-placement="bottom-end" class="dropdown-menu" >
                                     <a id="updateAction" data-id={{$hardDisk->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-edit"> Edit</i></a>
-                                    <a data-id={{$hardDisk->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"
-                                         onclick="event.preventDefault(); document.getElementById('deleteAction').submit();"
-                                        ><i class="fas fa-trash"> Delete</i>
-                                    </a>
-                                    <form id="deleteAction" action="{{ route('delete_processor',$hardDisk->id) }}" method="POST" >
-                                        @csrf
-                                        @method('delete')
-                                    </form>
+                                    <a id="deleteAction" data-id={{$hardDisk->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-trash"> Delete</i></a>
                                 </div>
                             </div>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
-                    {{ $hardDisks->links() }}
-                </tfoot>
             </table>
+            <div class="d-flex">
+                <div class="mx-auto mt-5">
+                    {{ $hardDisks->links('pagination::bootstrap-4') }}
+                </div>
+                </div>
             </div>
         </div>
     </div>
 
-    {{-- create modal start--}}
+    {{-- create modal --}}
     <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -65,8 +64,20 @@
                         <input type="text" class="form-control" id="name" name="name">
                     </div>
                     <div class="form-group">
+                        <label for="capacity" class="col-form-label">Kapasitas</label>
+                        <input type="number" class="form-control" id="capacity" name="capacity">
+                    </div>
+                    <div class="form-group">
                         <label for="price" class="col-form-label">Harga</label>                    
                         <input type="number" class="form-control" id="price" name="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="brand" class="col-form-label">Merek</label> 
+                        <select class="custom-select" id="brand" name="brand_id">
+                            @foreach ($brands as $brand)
+                                <option value="{{$brand->id}}">{{$brand->name}}</option>                              
+                            @endforeach
+                        </select>
                     </div>
                 </form>
                 <div class="row mt-5">
@@ -79,9 +90,9 @@
             </div>
         </div>
     </div>
-    {{-- create modal end--}}
+    {{-- create modal --}}
 
-    {{-- update modal start--}}
+    {{-- update modal --}}
     <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -98,8 +109,20 @@
                         <input type="text" class="form-control" id="name" name="name" value="">
                     </div>
                     <div class="form-group">
+                        <label for="capacity" class="col-form-label">Kapasitas</label>
+                        <input type="number" class="form-control" id="capacity" name="capacity">
+                    </div>
+                    <div class="form-group">
                         <label for="price" class="col-form-label">Harga</label>                    
-                        <input type="number" class="form-control" id="price" name="price" value="">
+                        <input type="number" class="form-control" id="price" name="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="brand" class="col-form-label">Merek</label> 
+                        <select class="custom-select" id="brand" name="brand_id">
+                            @foreach ($brands as $brand)
+                                <option value="{{$brand->id}}">{{$brand->name}}</option>                              
+                            @endforeach
+                        </select>
                     </div>
                 </form>
                 <div class="row mt-5">
@@ -112,7 +135,13 @@
             </div>
         </div>
     </div>
-    {{-- update modal end--}}
+    
+    {{-- delete form --}}
+    <form id="delete" action="" method="POST" >
+        @csrf
+        @method('delete')
+    </form>
+
 @endsection
 
 @push('script')
@@ -136,12 +165,23 @@
             success: function (hardDisk) {
                 console.log(routeUpdate);
                 $("#update #name").val(hardDisk.name);
+                $("#update #capacity").val(hardDisk.capacity);
                 $("#update #price").val(hardDisk.price);
+                $("#update #brand").val(hardDisk.brand_id);
                 $("#update").get(0).setAttribute('action', routeUpdate);
           }
         })
         
         $('#updateModal').modal('show');
+    });
+    
+    $(document).on("click", "#deleteAction", function () {
+        id = $(this).data('id');
+        var routeDelete = "{{ route('delete_hdd',":id") }}";
+        routeDelete = routeDelete.replace(':id',id);
+
+        $("#delete").get(0).setAttribute('action', routeDelete);
+        $("#delete").submit();
     });
 
     </script>

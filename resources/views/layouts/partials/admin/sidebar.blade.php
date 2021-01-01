@@ -1,21 +1,12 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed">
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="{{asset('lte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{asset('images/siexpo-logo.jpeg')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{asset('lte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
-      </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -67,7 +58,31 @@
                   <p>HDD</p>
                 </a>
               </li>
-            </ul>
+              <li class="nav-item">
+                <a href="{{route('keyboard')}}" class="nav-link pl-4 {{$menu == 'Keyboard' ? 'active' : ''}}">
+                  <p>Keyboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('monitor')}}" class="nav-link pl-4 {{$menu == 'Monitor' ? 'active' : ''}}">
+                  <p>Monitor</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('mouse')}}" class="nav-link pl-4 {{$menu == 'Mouse' ? 'active' : ''}}">
+                  <p>Mouse</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('mousePad')}}" class="nav-link pl-4 {{$menu == 'Mouse Pad' ? 'active' : ''}}">
+                  <p>Mouse Pad</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('vga')}}" class="nav-link pl-4 {{$menu == 'VGA' ? 'active' : ''}}">
+                  <p>VGA</p>
+                </a>
+              </li>
           </li>
         </ul>
       </nav>

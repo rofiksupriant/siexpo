@@ -4,48 +4,45 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-            <table id="" class="table table-hover">
-                <div class="float-right">
-                   <button type="button" class="btn btn-sm btn-transparent mr-3" data-toggle="modal" data-target="#createModal" style="opacity: 0.5;"><i class="fas fa-plus"></i></button> 
-                </div>
-                <thead>
-                    <tr>
-                        <th>Nama</th>
-                        <th>Harga</th>
-                        <th>Kompatibilitas Processor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($motherboards as $motherboard)
-                    <tr>
-                        <td>{{$motherboard->name}}</td>
-                        <td>{{$motherboard->price}}</td>
-                        <td>{{$motherboard->Processor->brandText()}}</td>
-                        <td>
-                            <div class="dropdown dropleft">
-                                <button class="btn btn-transparent text-muted p-0 border-0" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v" style="opacity: 0.5;"></i>
-                                </button>
-                                <div x-placement="bottom-end" class="dropdown-menu" >
-                                    <a id="updateAction" data-id={{$motherboard->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-edit"> Edit</i></a>
-                                    <a data-id={{$motherboard->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"
-                                         onclick="event.preventDefault(); document.getElementById('deleteAction').submit();"
-                                        ><i class="fas fa-trash"> Delete</i>
-                                    </a>
-                                    <form id="deleteAction" action="{{ route('delete_processor',$motherboard->id) }}" method="POST" >
-                                        @csrf
-                                        @method('delete')
-                                    </form>
+                <table id="" class="table table-hover">
+                    <div class="float-right">
+                    <button type="button" class="btn btn-sm btn-transparent mr-3" data-toggle="modal" data-target="#createModal" style="opacity: 0.5;"><i class="fas fa-plus"></i></button> 
+                    </div>
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Harga</th>
+                            <th>Merek</th>
+                            <th>Kompatibilitas Processor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($motherboards as $motherboard)
+                        <tr>
+                            <td>{{$motherboard->name}}</td>
+                            <td>{{$motherboard->price}}</td>
+                            <td>{{$motherboard->brand ? $motherboard->brand->name : "-"}}</td>
+                            <td>{{$motherboard->processorBrand ? $motherboard->processorBrand->name : "-"}}</td>
+                            <td>
+                                <div class="dropdown dropleft">
+                                    <button class="btn btn-transparent text-muted p-0 border-0" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v" style="opacity: 0.5;"></i>
+                                    </button>
+                                    <div x-placement="bottom-end" class="dropdown-menu" >
+                                        <a id="updateAction" data-id={{$motherboard->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-edit"> Edit</i></a>
+                                        <a id="deleteAction" data-id={{$motherboard->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-trash"> Delete</i></a>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                <tfoot>
-                    {{ $motherboards->links() }}
-                </tfoot>
-            </table>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <div class="d-flex">
+                <div class="mx-auto mt-5">
+                    {{ $motherboards->links('pagination::bootstrap-4') }}
+                </div>
+                </div>
             </div>
         </div>
     </div>
@@ -71,10 +68,20 @@
                         <input type="number" class="form-control" id="price" name="price">
                     </div>
                     <div class="form-group">
-                        <label for="brand" class="col-form-label">Kompatibilitas Processor</label> 
-                        <select class="custom-select" id="brand" name="brand">
-                            @foreach ($brands as $key => $value)
-                                <option value="{{$key}}">{{$value}}</option>                              
+                        <label for="brand" class="col-form-label">Merek</label> 
+                        <select class="custom-select" id="brand" name="brand_id">
+                            <option value="">Pilih Merek</option>                              
+                            @foreach ($brands as $brand)
+                                <option value="{{$brand->id}}">{{$brand->name}}</option>                              
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="motherboard-brand" class="col-form-label">Kompatibilitas Processor</label> 
+                        <select class="custom-select" id="motherboard-brand" name="processor_brand_id">
+                            <option value="">Pilih Kompatibilitas Processor</option>                              
+                            @foreach ($processorBrands as $processorBrand)
+                                <option value="{{$processorBrand->id}}">{{$processorBrand->name}}</option>                              
                             @endforeach
                         </select>
                     </div>
@@ -111,6 +118,23 @@
                         <label for="price" class="col-form-label">Harga</label>                    
                         <input type="number" class="form-control" id="price" name="price" value="">
                     </div>
+                    <div class="form-group">
+                        <label for="brand" class="col-form-label">Merek</label> 
+                        <select class="custom-select" id="brand" name="brand_id">
+                            @foreach ($brands as $brand)
+                                <option value="{{$brand->id}}">{{$brand->name}}</option>                              
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="processor-brand" class="col-form-label">Kompatibilitas Processor</label> 
+                        <select class="custom-select" id="processor-brand" name="processor_brand_id">
+                            <option value="">Pilih Kompatibilitas Processor</option>                              
+                            @foreach ($processorBrands as $processorBrand)
+                                <option value="{{$processorBrand->id}}">{{$processorBrand->name}}</option>                              
+                            @endforeach
+                        </select>
+                    </div>
                 </form>
                 <div class="row mt-5">
                     <button type="button" class="btn btn-primary" style="margin: 0 auto" 
@@ -123,6 +147,12 @@
         </div>
     </div>
     {{-- update modal end--}}
+        
+    {{-- delete form --}}
+    <form id="delete" action="" method="POST" >
+        @csrf
+        @method('delete')
+    </form>
 @endsection
 
 @push('script')
@@ -147,11 +177,22 @@
                 console.log(routeUpdate);
                 $("#update #name").val(motherboard.name);
                 $("#update #price").val(motherboard.price);
+                $("#update #brand").val(motherboard.brand_id);
+                $("#update #processor-brand").val(motherboard.processor_brand_id);
                 $("#update").get(0).setAttribute('action', routeUpdate);
           }
         })
         
         $('#updateModal').modal('show');
+    });
+        
+    $(document).on("click", "#deleteAction", function () {
+        id = $(this).data('id');
+        var routeDelete = "{{ route('delete_motherboard',":id") }}";
+        routeDelete = routeDelete.replace(':id',id);
+
+        $("#delete").get(0).setAttribute('action', routeDelete);
+        $("#delete").submit();
     });
 
     </script>

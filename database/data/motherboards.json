@@ -1,0 +1,122 @@
+[
+    {
+        "name": "MSI H410M-A Pro (LGA1200, H410, DDR4, USB3.2, SATA3)",
+        "price": 1125000,
+        "processor_brand_id": 1
+    },
+    {
+        "name": "ASRock H410M-HDV/M.2 (LGA1200, H410, DDR4, USB3.2, SATA3)",
+        "price": 1075000,
+        "processor_brand_id": 1
+    },
+    {
+        "name": "Asus PRIME H410M-D (LGA1200, H410, DDR4, USB3.2, SATA3)",
+        "price": 1250000,
+        "processor_brand_id": 1
+    },
+    {
+        "name": "Gigabyte H410M-H (LGA1200, H410, DDR4, USB3.2, SATA3)",
+        "price": 1100000,
+        "processor_brand_id": 1
+    },
+    {
+        "name": "Gigabyte B460 Aorus Pro AC (LGA1200, B460, DDR4, USB3.2, SATA3)",
+        "price": 3000000,
+        "processor_brand_id": 1
+    },
+    {
+        "name": "MSI MAG B460 Tomahawk (LGA1200, B460, DDR4, USB3.2, SATA3)",
+        "price": 2600000,
+        "processor_brand_id": 1
+    },
+    {
+        "name": "Asus ROG STRIX B460-F Gaming (LGA1200, B460, DDR4, USB3.2, SATA3)",
+        "price": 3200000,
+        "processor_brand_id": 1
+    },
+    {
+        "name": "ASRock B460 Steel Legend (LGA1200, B460, DDR4, USB3.2, SATA3)",
+        "price": 2100000,
+        "processor_brand_id": 1
+    },
+    {
+        "name": "Asus ROG STRIX Z490-F Gaming (LGA1200, Z490, DDR4, USB3.2, SATA3)",
+        "price": 4600000,
+        "processor_brand_id": 1
+    },
+    {
+        "name": "Gigabyte Z490 Aorus Elite AC (LGA1200, Z490, DDR4, USB3.2, SATA3)",
+        "price": 4100000,
+        "processor_brand_id": 1
+    },
+    {
+        "name": "MSI MAG Z490 Tomahawk (LGA1200, Z490, DDR4, USB3.2, SATA3) ",
+        "price": 4200000,
+        "processor_brand_id": 1
+    },
+    {
+        "name": "ASRock Z490 Steel Legend (LGA1200, Z490, DDR4, USB3.2, SATA3)",
+        "price": 3200000,
+        "processor_brand_id": 1
+    },
+    {
+        "name": "MSI A320M-A Pro MAX (AM4, AMD Promontory A320, DDR4, USB3.2, SATA3)",
+        "price": 825000,
+        "processor_brand_id": 2
+    },
+    {
+        "name": "Asus PRIME A320M-F (AM4, AMD Promontory A320, DDR4, USB 3.1, SATA3)",
+        "price": 850000,
+        "processor_brand_id": 2
+    },
+    {
+        "name": "Gigabyte GA-A320M-S2H-V2 (AM4, AMD Promontory B350, DDR4, USB3.1, SATA",
+        "price": 900000,
+        "processor_brand_id": 2
+    },
+    {
+        "name": "ASRock A320M-HDV (AM4, AMD Promontory A320, DDR4, SATA3)",
+        "price": 775000,
+        "processor_brand_id": 2
+    },
+    {
+        "name": "Gigabyte B550 Aorus Elite V2 (AM4, AMD Promontory B550, DDR4, USB3.2)",
+        "price": 3300000,
+        "processor_brand_id": 2
+    },
+    {
+        "name": "MSI MPG B550 Gaming Edge Wifi (AM4, AMD Promontory B550, DDR4, USB3.2)",
+        "price": 3600000,
+        "processor_brand_id": 2
+    },
+    {
+        "name": "Asus ROG STRIX B550-F Gaming (AM4, AMD Promontory B550, DDR4, USB3.2)",
+        "price": 3650000,
+        "processor_brand_id": 2
+    },
+    {
+        "name": "ASRock B550 Steel Legend (AM4, AMD Promontory B550, DDR4, USB3.2)",
+        "price": 3000000,
+        "processor_brand_id": 2
+    },
+    {
+        "name": "Gigabyte X570 Aorus Ultra (AM4, AMD Premium X570, DDR4, USB3.2, SATA3)",
+        "price": 6400000,
+        "processor_brand_id": 2
+    },
+    {
+        "name": "Motherboard Asus ROG STRIX X570-E Gaming AM4 X570 DDR4 USB3.2 SATA3",
+        "price": 6100000,
+        "processor_brand_id": 2
+    },
+    {
+        "name": "MSI MPG X570 Gaming Pro Carbon Wifi (AMD Premium X570, DDR4, USB3.2)",
+        "price": 4900000,
+        "processor_brand_id": 2
+    },
+    {
+        "name": "ASRock X570 Steel Legend (AM4, AMD Premium X570, DDR4, USB3.2, SATA3)",
+        "price": 3900000,
+        "processor_brand_id": 2
+    }
+]

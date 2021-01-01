@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Corsair CV Series 450W - 80 Plus Bronze / PSU 450W",
+        "price": 700000,
+        "power": 450
+    },
+    {
+        "name": "Corsair CV Series 550W - 80 Plus Bronze / PSU 550W",
+        "price": 850000,
+        "power": 550
+    },
+    {
+        "name": "Corsair CV Series 650W - 80 Plus Bronze / PSU 650W",
+        "price": 975000,
+        "power": 650
+    },
+    {
+        "name": "Corsair CXM Series 750W Modular – Bronze",
+        "price": 1600000,
+        "power": 750
+    },
+    {
+        "name": "Corsair HX Series 1000W Full Modular – Platinum",
+        "price": 3700000,
+        "power": 1000
+    },
+    {
+        "name": "Corsair HX Series 750W Full Modular – Platinum",
+        "price": 2500000,
+        "power": 750
+    },
+    {
+        "name": "Corsair CXM Series 650W Modular – Bronze",
+        "price": 1350000,
+        "power": 650
+    },
+    {
+        "name": "Corsair CXF RGB Series 750W Full Modular - Bronze / CX750F PSU 750W",
+        "price": 1800000,
+        "power": 750
+    },
+    {
+        "name": "Corsair CXF RGB White Series 650W Full Modular / CX650F PSU 650W",
+        "price": 1750000,
+        "power": 650
+    }
+]

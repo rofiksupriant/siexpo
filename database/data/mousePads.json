@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Mousepad Bantal",
+        "price": 10000
+    },
+    {
+        "name": "Mousepad Standard",
+        "price": 15000
+    },
+    {
+        "name": "Orico MPS3025 3mm Mouse Pad",
+        "price": 45000
+    },
+    {
+        "name": "Logitech G240 Cloth Gaming Mouse Pad",
+        "price": 275000
+    },
+    {
+        "name": "Logitech G440 Hard Gaming Mouse Pad",
+        "price": 350000
+    },
+    {
+        "name": "Logitech G640 Large Gaming Mouse Pad",
+        "price": 475000
+    },
+    {
+        "name": "Mousepad Xiaomi Miiiw with Wireless Charging Pad",
+        "price": 750000
+    }
+]

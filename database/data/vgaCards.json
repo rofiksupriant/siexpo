@@ -1,0 +1,132 @@
+[
+    {
+        "name": "PowerColor Radeon R5 230 2GB DDR3 64 Bit",
+        "price": 575000,
+        "brand_id": 3
+    },
+    {
+        "name": "PowerColor Radeon R7 250 2GB DDR5 128 Bit OC",
+        "price": 900000,
+        "brand_id": 3
+    },
+    {
+        "name": "Sapphire RX 550 4GB DDR5 Pulse OC",
+        "price": 1250000,
+        "brand_id": 3
+    },
+    {
+        "name": "PowerColor Radeon RX 570 4GB DDR5 Red Dragon",
+        "price": 2200000,
+        "brand_id": 3
+    },
+    {
+        "name": "Gigabyte Radeon RX 570 8GB DDR5 Gaming",
+        "price": 3000000,
+        "brand_id": 3
+    },
+    {
+        "name": "VGA MSI Radeon RX 580 8GB - Armor 8G OC",
+        "price": 3500000,
+        "brand_id": 3
+    },
+    {
+        "name": "MSI Radeon RX 5500 XT 4GB DDR6 - MECH OC",
+        "price": 2850000,
+        "brand_id": 3
+    },
+    {
+        "name": "ASRock Radeon RX 5500 XT 8GB DDR6 - Phantom Gaming D 8G OC",
+        "price": 3750000,
+        "brand_id": 3
+    },
+    {
+        "name": "MSI Radeon RX 5600 XT 6GB DDR6 - Gaming MX",
+        "price": 5400000,
+        "brand_id": 3
+    },
+    {
+        "name": "MSI Radeon RX 5700 8GB DDR6 - Gaming X",
+        "price": 7000000,
+        "brand_id": 3
+    },
+    {
+        "name": "Asus Radeon RX 5700 XT 8GB DDR6 – Strix",
+        "price": 8300000,
+        "brand_id": 3
+    },
+    {
+        "name": "Biostar GeForce GT 210 1GB DDR2 64 Bit",
+        "price": 425000,
+        "brand_id": 4
+    },
+    {
+        "name": "MSI GeForce GT 710 2GB DDR3 - N710-2GD3H LP",
+        "price": 675000,
+        "brand_id": 4
+    },
+    {
+        "name": "Biostar GeForce GT 730 2GB DDR5 64 Bit",
+        "price": 725000,
+        "brand_id": 4
+    },
+    {
+        "name": "MSI GeForce GT 1030 2GB DDR5 - AERO ITX 2G OC",
+        "price": 1175000,
+        "brand_id": 4
+    },
+    {
+        "name": "Asus GeForce GTX 1050 Ti 4GB DDR5 - Cerberus-GTX1050TI-O4G",
+        "price": 2225000,
+        "brand_id": 4
+    },
+    {
+        "name": "COLORFUL GTX 1650 4GB DDR5 - DUAL FAN",
+        "price": 2200000,
+        "brand_id": 4
+    },
+    {
+        "name": "COLORFUL GTX 1650 EX 4GD6-V 4GB GDDR6",
+        "price": 2350000,
+        "brand_id": 4
+    },
+    {
+        "name": "MSI GeForce GTX 1650 SUPER 4GB DDR6 - AERO ITX OC",
+        "price": 2825000,
+        "brand_id": 4
+    },
+    {
+        "name": "MSI Geforce GTX 1660 6GB DDR5 - Ventus XS 6",
+        "price": 3575000,
+        "brand_id": 4
+    },
+    {
+        "name": "VGA MSI Geforce GTX 1660 SUPER 6GB DDR6 - Ventus XS OC V1",
+        "price": 4050000,
+        "brand_id": 4
+    },
+    {
+        "name": "Asus GeForce GTX 1660 Ti 6GB DDR6 - Strix Advance",
+        "price": 5300000,
+        "brand_id": 4
+    },
+    {
+        "name": "GALAX Geforce RTX 3060 Ti 8GB DDR6 (1-Click OC) - DUAL FAN",
+        "price": 7850000,
+        "brand_id": 4
+    },
+    {
+        "name": "Inno 3D GeForce RTX 3070 8GB GDDR6 ICHILL X4",
+        "price": 10000000,
+        "brand_id": 4
+    },
+    {
+        "name": "GIGABYTE RTX 3080 AORUS MASTER 10GB GDDR6X",
+        "price": 18500000,
+        "brand_id": 4
+    },
+    {
+        "name": "MSI GeForce RTX 3090 24GB GDDR6X - Gaming X TRIO",
+        "price": 32500000,
+        "brand_id": 4
+    }
+]

@@ -1,0 +1,187 @@
+[
+    {
+        "name": "Team Elite Plus Black DDR4 PC21000 2666Mhz 4GB",
+        "price": 325000,
+        "size": 4
+    },
+    {
+        "name": "Apacer DDR4 PC21000 2666Mhz 4GB - Panther Golden",
+        "price": 300000,
+        "size": 4
+    },
+    {
+        "name": "Corsair DDR4 Vengeance LPX PC19200 4GB (1X4GB) - CMK4GX4M1A2400C16",
+        "price": 400000,
+        "size": 4
+    },
+    {
+        "name": "Kingston HyperX Fury Black DDR4 2666 MHz) 4GB (1x4GB)",
+        "price": 425000,
+        "size": 4
+    },
+    {
+        "name": "V-GeN TsunamiX RGB-V DDR4 PC24000 3000Mhz 8GB (2x4GB) 16-18-18-35",
+        "price": 800000,
+        "size": 8
+    },
+    {
+        "name": "Corsair DDR4 Vengeance LPX PC28800 8GB (1X8GB) - CMK8GX4M1D3600C18",
+        "price": 775000,
+        "size": 8
+    },
+    {
+        "name": "Kingston HyperX Fury Black DDR4 2666 MHz 8GB (1x8GB) - HX426C16FB3/8",
+        "price": 550000,
+        "size": 8
+    },
+    {
+        "name": "Gskill DDR4 RipjawsV PC21300 8GB Single Channel F4-2666C19S-8GVR",
+        "price": 510000,
+        "size": 8
+    },
+    {
+        "name": "Team Delta DDR4 RGB PC24000 3000Mhz 8GB (2x4GB) White Heatspreader",
+        "price": 850000,
+        "size": 8
+    },
+    {
+        "name": "Apacer DDR4 PC21000 2666Mhz 8GB - Panther Golden",
+        "price": 500000,
+        "size": 8
+    },
+    {
+        "name": "Corsair DDR4 Vengeance LPX PC21000 8GB (2X4GB) - CMK8GX4M2A2666C16",
+        "price": 775000,
+        "size": 8
+    },
+    {
+        "name": "Team Elite Plus Black DDR4 PC21000 2666Mhz Dual Channel 8GB (2x4GB)",
+        "price": 625000,
+        "size": 8
+    },
+    {
+        "name": "Gskill DDR4 TridentZ Royal PC32000 16GB (2x8GB) F4-4000C15D-16GTRG",
+        "price": 4600000,
+        "size": 16
+    },
+    {
+        "name": "KLEVV DDR4 CRAS XR RGB PC32000 4000MHz 16GB (2X8GB) RGB LED",
+        "price": 1900000,
+        "size": 16
+    },
+    {
+        "name": "ADATA DDR4 XPG SPECTRIX D50 WHITE VERSION PC25600 16GB (2X8GB) RGB",
+        "price": 1250000,
+        "size": 16
+    },
+    {
+        "name": "Team Delta DDR4 RGB PC28800 3600Mhz Dual Channel 16GB (2X8GB) White",
+        "price": 1400000,
+        "size": 16
+    },
+    {
+        "name": "Gskill DDR4 TridentZ RGB PC32000 16GB DualChannel F4-4000C17D-16GTZRB",
+        "price": 2550000,
+        "size": 16
+    },
+    {
+        "name": "ADATA DDR4 XPG SPECTRIX D60G PC28800 16GB (2X8GB) / RAM 16GB",
+        "price": 1450000,
+        "size": 16
+    },
+    {
+        "name": "Kingston HyperX Fury RGB DDR4 3600MHz 16GB (2x8GB) HX436C17FB3AK2/16",
+        "price": 1600000,
+        "size": 16
+    },
+    {
+        "name": "Team Elite Plus Black DDR4 PC25600 Dual Channel 16GB / RAM 16GB",
+        "price": 1000000,
+        "size": 16
+    },
+    {
+        "name": "Team Delta DDR4 RGB PC28800 Dual 16GB - TF3D416G3600HC18BDC01 – Black",
+        "price": 1375000,
+        "size": 16
+    },
+    {
+        "name": "Patriot DDR4 Viper Steel RGB Series Dual Channel PC25600 16GB (2x8GB)",
+        "price": 1275000,
+        "size": 16
+    },
+    {
+        "name": "KLEVV DDR4 BOLT XR Series PC28800 3600MHz Dual Channel 16GB (2X8GB)",
+        "price": 1075000,
+        "size": 16
+    },
+    {
+        "name": "Corsair DDR4 Vengeance LPX PC21000 16GB (2X8GB) - CMK16GX4M2A2666C16",
+        "price": 1275000,
+        "size": 16
+    },
+    {
+        "name": "Corsair DDR4 Vengeance RGB Pro PC25600 16GB 2X8GB - CMW16GX4M2C3200C16",
+        "price": 1600000,
+        "size": 16
+    },
+    {
+        "name": "V-GeN TsunamiX RGB-V DDR4 PC27000 3333Mhz Dual Channel 16GB (2x8GB)",
+        "price": 1250000,
+        "size": 16
+    },
+    {
+        "name": "Gskill DDR4 TridentZ Royal PC32000 32GB (2x16GB) F4-4000C19D-32GTRS",
+        "price": 6750000,
+        "size": 32
+    },
+    {
+        "name": "Corsair DDR4 Dominator Platinum RGB PC28800 32GB CMT32GX4M2C3600C18",
+        "price": 4750000,
+        "size": 32
+    },
+    {
+        "name": "Corsair DDR4 Vengeance RGB Pro PC25600 32GB - CMW32GX4M2C3200C16",
+        "price": 2600000,
+        "size": 32
+    },
+    {
+        "name": "Corsair DDR4 Vengeance LPX PC25600 32GB (2X16GB) - CMK32GX4M2B3200C16",
+        "price": 2375000,
+        "size": 32
+    },
+    {
+        "name": "KLEVV DDR4 CRAS XR RGB PC28800 3600MHz 32GB (2X16GB) RGB LED",
+        "price": 2375000,
+        "size": 32
+    },
+    {
+        "name": "Team Delta DDR4 RGB PC25600 3200Mhz Dual Channel 32GB – Black",
+        "price": 2150000,
+        "size": 32
+    },
+    {
+        "name": "Team Delta DDR4 RGB PC28800 3600Mhz Dual Channel 32GB (2X16GB) – White",
+        "price": 2250000,
+        "size": 32
+    },
+    {
+        "name": "ADATA DDR4 XPG SPECTRIX D50 PC25600 3200MHz 32GB (2X16GB) RGB",
+        "price": 2250000,
+        "size": 32
+    },
+    {
+        "name": "V-GeN Tsunami DDR4 PC21000 2666Mhz Dual Channel 32GB / RAM 32GB",
+        "price": 1800000,
+        "size": 32
+    },
+    {
+        "name": "ADATA DDR4 XPG SPECTRIX D60G PC25600 32GB (2X16GB) / RAM 32GB",
+        "price": 2450000,
+        "size": 32
+    },
+    {
+        "name": "RAM Team Elite Plus Black DDR4 PC21000 2666Mhz Dual Channel 32GB",
+        "price": 1700000,
+        "size": 32
+    }
+]

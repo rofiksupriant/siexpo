@@ -16,8 +16,9 @@ class CreateHardDiskDrivesTable extends Migration
         Schema::create('hard_disk_drives', function (Blueprint $table) {
             $table->id();
             $table->text('name');
+            $table->integer('capacity')->nullable();
             $table->integer('price');
-            $table->unsignedSmallInteger('brand_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
             $table->timestamps();
         });
     }

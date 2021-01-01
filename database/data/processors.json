@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Intel Core i3-10100 3.6Ghz Up To 4.3Ghz [Box] LGA 1200",
+        "price": 1800000,
+        "brand_id": 1
+    },
+    {
+        "name": "Intel Core i3-10100F 3.6Ghz Up To 4.3Ghz - [Box] Socket LGA 1200",
+        "price": 1400000,
+        "brand_id": 1
+    },
+    {
+        "name": "Intel Core i5-10400 2.9Ghz Up To 4.3Ghz - Cache 12 MB [Box] LGA 1200",
+        "price": 2700000,
+        "brand_id": 1
+    },
+    {
+        "name": "Intel Core i5-10500 3.1Ghz Up To 4.5Ghz - Cache 12MB [Box] LGA 1200",
+        "price": 3200000,
+        "brand_id": 1
+    },
+    {
+        "name": "Intel Core i5-10600 3.3Ghz Up To 4.8Ghz - Cache 12MB [Box] LGA 1200",
+        "price": 3550000,
+        "brand_id": 1
+    },
+    {
+        "name": "Intel Core i7-10700 2.9Ghz Up To 4.8Ghz - Cache 16MB [Box] LGA 1200",
+        "price": 5100000,
+        "brand_id": 1
+    },
+    {
+        "name": "Intel Core i7-10700K 3.8Ghz Up To 5.1Ghz - Cache 16MB [Box] LGA 1200",
+        "price": 5900000,
+        "brand_id": 1
+    },
+    {
+        "name": "Intel Core i9-10850K 3.6Ghz Up To 5.2Ghz - Cache 20MB [Box] Socket LGA",
+        "price": 7000000,
+        "brand_id": 1
+    },
+    {
+        "name": "Intel Core i9-10900K 3.7Ghz Up To 5.3Ghz [Box] Socket LGA 1200",
+        "price": 8100000,
+        "brand_id": 1
+    },
+    {
+        "name": "AMD Ryzen 3 3100 3.6Ghz Up To 3.9Ghz Cache 16MB 65W AM4 [Box] - 4 Core",
+        "price": 2.000000,
+        "brand_id": 2
+    },
+    {
+        "name": "AMD Ryzen 3 3200G 3.6Ghz Up To 4.0Ghz Cache 4MB 65W AM4 [Box] - 4 Core",
+        "price": 2150000,
+        "brand_id": 2
+    },
+    {
+        "name": "AMD Ryzen 5 3400G 3.7Ghz Up To 4.2Ghz Cache 4MB 65W AM4 [Box] - 4 Cor",
+        "price": 2600000,
+        "brand_id": 2
+    },
+    {
+        "name": "AMD Ryzen 5 3500X 3.6Ghz Up To 4.1Ghz Cache 32MB 65W AM4 [Box]",
+        "price": 2650000,
+        "brand_id": 2
+    },
+    {
+        "name": "AMD Ryzen 5 3600 3.6Ghz Up To 4.2Ghz Cache 32MB 65W AM4 [Box] - 6 Core",
+        "price": 3300000,
+        "brand_id": 2
+    },
+    {
+        "name": "AMD Ryzen 7 3700X 3.6Ghz Up To 4.4Ghz Cache 32MB 65W AM4 [Box]",
+        "price": 5200000,
+        "brand_id": 2
+    },
+    {
+        "name": "AMD Ryzen 7 3800X 3.9Ghz Up To 4.5Ghz Cache 32MB 105W AM4 [Box]",
+        "price": 6200000,
+        "brand_id": 2
+    },
+    {
+        "name": "AMD Ryzen 9 3900X 3.8Ghz Up To 4.6Ghz Cache 64MB 105W AM4 [Box]",
+        "price": 8000000,
+        "brand_id": 2
+    },
+    {
+        "name": "AMD Ryzen 9 3950X 3.5Ghz Up To 4.7Ghz Cache 64MB AM4 [Box] - 16 Core",
+        "price": 12500000,
+        "brand_id": 2
+    }
+]

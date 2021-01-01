@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class ProcessorController extends Controller
 {
-    protected $route = "processor";
+    protected $route = "admin/master_data/processor";
 
     public function index()
     {
-        $processors = Processor::with('brand')->paginate(15);
+        $processors = Processor::with('brand')->paginate(10);
         $parentMenu = "Master Data";
         $menu = "Processor";
         $brands = Processor::brandDropdown();
@@ -25,13 +25,13 @@ class ProcessorController extends Controller
         $request->validate([
             'name'  => 'required|string',
             'price' => 'required|numeric',
-            'brand' => 'required|numeric'
+            'brand_id' => 'required|numeric'
         ]);
 
         $processor = new Processor();
         $processor->name = $request->name;
         $processor->price = $request->price;
-        $processor->brand = $request->brand;
+        $processor->brand_id = $request->brand_id;
         $processor->save();
 
         return redirect()->route($this->route);
@@ -49,14 +49,14 @@ class ProcessorController extends Controller
         $request->validate([
             'name'  => 'required|string',
             'price' => 'required|numeric',
-            'brand' => 'required|numeric'
+            'brand_id' => 'required|numeric'
         ]);
 
         $processor = Processor::findOrFail($id);
 
         $processor->name = $request->name;
         $processor->price = $request->price;
-        $processor->brand = $request->brand;
+        $processor->brand_id = $request->brand_id;
 
         $processor->save();
 

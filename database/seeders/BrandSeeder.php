@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Brand;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class BrandSeeder extends Seeder
 {
@@ -14,6 +16,8 @@ class BrandSeeder extends Seeder
      */
     public function run()
     {
+        // DON'T TOUCH THIS !!! - start 
+
         $brands = [
             [
                 'name' => 'Intel',
@@ -22,21 +26,23 @@ class BrandSeeder extends Seeder
             [
                 'name' => 'AMD',
                 'product_type' => Brand::PROCESSOR,
+            ],            [
+                'name' => 'Ati Radeon',
+                'product_type' => Brand::VGA,
             ],
             [
-                'name' => 'MSI',
-                'product_type' => Brand::MOTHERBOARD,
-            ],
-            [
-                'name' => 'Asus',
-                'product_type' => Brand::MOTHERBOARD,
-            ],
-            [
-                'name' => 'Gigabyte',
-                'product_type' => Brand::MOTHERBOARD,
+                'name' => 'Nvidia Gforce',
+                'product_type' => Brand::VGA,
             ],
         ];
 
         Brand::insert($brands);
+
+        DB::table('brands')->update([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        // DON'T TOUCH THIS !!! - end
     }
 }

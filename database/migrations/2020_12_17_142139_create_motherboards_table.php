@@ -17,8 +17,8 @@ class CreateMotherboardsTable extends Migration
             $table->id();
             $table->text('name');
             $table->integer('price');
-            $table->unsignedSmallInteger('brand_id')->nullable();
-            $table->smallInteger('processor_brand_id');
+            $table->unsignedBigInteger('brand_id')->nullable();
+            $table->bigInteger('processor_brand_id');
             $table->timestamps();
         });
     }

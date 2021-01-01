@@ -11,41 +11,38 @@
                 <thead>
                     <tr>
                         <th>Nama</th>
+                        <th>Kapasitas</th>
                         <th>Harga</th>
                         <th>Brand</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($processors as $processor)
+                    @foreach ($ssds as $ssd)
                     <tr>
-                        <td>{{$processor->name}}</td>
-                        <td>{{$processor->price}}</td>
-                        <td>{{$processor->brandText()}}</td>
+                        <td>{{$ssd->name}}</td>
+                        <td>{{$ssd->capacity}}</td>
+                        <td>{{$ssd->price}}</td>
+                        <td>{{$ssd->brand?$ssd->brand->name:"-"}}</td>
                         <td>
                             <div class="dropdown dropleft">
                                 <button class="btn btn-transparent text-muted p-0 border-0" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v" style="opacity: 0.5;"></i>
                                 </button>
                                 <div x-placement="bottom-end" class="dropdown-menu" >
-                                    <a id="updateAction" data-id={{$processor->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-edit"> Edit</i></a>
-                                    <a data-id={{$processor->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"
-                                         onclick="event.preventDefault(); document.getElementById('deleteAction').submit();"
-                                        ><i class="fas fa-trash"> Delete</i>
-                                    </a>
-                                    <form id="deleteAction" action="{{ route('delete_processor',$processor->id) }}" method="POST" >
-                                        @csrf
-                                        @method('delete')
-                                    </form>
+                                    <a id="updateAction" data-id={{$ssd->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-edit"> Edit</i></a>
+                                    <a id="deleteAction" data-id={{$ssd->id}} href="#" class="dropdown-item" type="button" style="opacity: 0.5;"><i class="fas fa-trash"> Delete</i></a>
                                 </div>
                             </div>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
-                    {{ $processors->links() }}
-                </tfoot>
             </table>
+            <div class="d-flex">
+                <div class="mx-auto mt-5">
+                    {{ $ssds->links('pagination::bootstrap-4') }}
+                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -60,22 +57,26 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="create-processor" action="{{ url('admin/create_processor') }}" method="POST">
+                <form id="create-ssd" action="{{ route('create_ssd') }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="processor-name" class="col-form-label">Nama</label>
-                        <input type="text" class="form-control" id="processor-name" name="name">
+                        <label for="ssd-name" class="col-form-label">Nama</label>
+                        <input type="text" class="form-control" id="ssd-name" name="name">
                     </div>
                     <div class="form-group">
-                        <label for="processor-price" class="col-form-label">Harga</label>                    
-                        <input type="number" class="form-control" id="processor-price" name="price">
+                        <label for="ssd-capacity" class="col-form-label">Kapasitas</label>                    
+                        <input type="number" class="form-control" id="ssd-capacity" name="capacity">
                     </div>
                     <div class="form-group">
-                        <label for="processor-brand" class="col-form-label">Merek</label> 
-                        <select class="custom-select" id="processor-brand" name="brand">
+                        <label for="ssd-price" class="col-form-label">Harga</label>                    
+                        <input type="number" class="form-control" id="ssd-price" name="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="ssd-brand" class="col-form-label">Merek</label> 
+                        <select class="custom-select" id="ssd-brand" name="brand_id">
                             <option selected>Pilih Merek</option>
-                            @foreach ($brands as $key => $value)
-                                <option value="{{$key}}">{{$value}}</option>                              
+                            @foreach ($brands as $brand)
+                                <option value="{{$brand->id}}">{{$brand->name}}</option>                              
                             @endforeach
                         </select>
                     </div>
@@ -83,7 +84,7 @@
                 <div class="row mt-5">
                     <button type="button" class="btn btn-primary" style="margin: 0 auto" 
                         onclick="event.preventDefault();
-                            document.getElementById('create-processor').submit();"
+                            document.getElementById('create-ssd').submit();"
                     >Simpan</button>
                 </div>
             </div>
@@ -102,21 +103,26 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="update-processor" method="POST">
+                <form id="update-ssd" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="processor-name" class="col-form-label">Nama</label>
-                        <input type="text" class="form-control" id="processor-name" name="name" value="">
+                        <label for="ssd-name" class="col-form-label">Nama</label>
+                        <input type="text" class="form-control" id="ssd-name" name="name" value="">
                     </div>
                     <div class="form-group">
-                        <label for="processor-price" class="col-form-label">Harga</label>                    
-                        <input type="number" class="form-control" id="processor-price" name="price" value="">
+                        <label for="ssd-capacity" class="col-form-label">Kapasitas</label>                    
+                        <input type="number" class="form-control" id="ssd-capacity" name="capacity">
                     </div>
                     <div class="form-group">
-                        <label for="processor-brand" class="col-form-label">Merek</label> 
-                        <select class="custom-select" id="processor-brand" name="brand">
-                            @foreach ($brands as $key => $value)
-                                <option value="{{$key}}">{{$value}}</option>                              
+                        <label for="ssd-price" class="col-form-label">Harga</label>                    
+                        <input type="number" class="form-control" id="ssd-price" name="price" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="ssd-brand" class="col-form-label">Merek</label> 
+                        <select class="custom-select" id="ssd-brand" name="brand_id">
+                            <option selected>Pilih Merek</option>
+                            @foreach ($brands as $brand)
+                                <option value="{{$brand->id}}">{{$brand->name}}</option>                              
                             @endforeach
                         </select>
                     </div>
@@ -124,7 +130,7 @@
                 <div class="row mt-5">
                     <button type="button" class="btn btn-primary" style="margin: 0 auto" 
                         onclick="event.preventDefault();
-                            document.getElementById('update-processor').submit();"
+                            document.getElementById('update-ssd').submit();"
                     >Simpan</button>
                 </div>                
             </div>
@@ -132,6 +138,12 @@
         </div>
     </div>
     {{-- update modal end--}}
+        
+    {{-- delete form --}}
+    <form id="delete" action="" method="POST" >
+        @csrf
+        @method('delete')
+    </form>
 @endsection
 
 @push('script')
@@ -139,8 +151,8 @@
         $(document).on("click", "#updateAction", function () {
 
         id = $(this).data('id');
-        var routeUpdate = "{{ route('update_processor',":id") }}";
-        let url = "{{ route('form_update_processor',":id") }}";
+        var routeUpdate = "{{ route('update_ssd',":id") }}";
+        let url = "{{ route('form_update_ssd',":id") }}";
 
         url = url.replace(':id',id);
         routeUpdate = routeUpdate.replace(':id',id);
@@ -152,17 +164,26 @@
             // data: {
             //     _token: '{{ csrf_token() }}'
             // },
-            success: function (processor) {
+            success: function (ssd) {
                 console.log(routeUpdate);
-                $(".modal-body #processor-name").val(processor.name);
-                $(".modal-body #processor-price").val(processor.price);
-                $(".modal-body #processor-brand").val(processor.brand);
-                $("#update-processor").get(0).setAttribute('action', routeUpdate);
+                $(".modal-body #ssd-name").val(ssd.name);
+                $(".modal-body #ssd-price").val(ssd.price);
+                $(".modal-body #ssd-capacity").val(ssd.capacity);
+                $(".modal-body #ssd-brand").val(ssd.brand_id);
+                $("#update-ssd").get(0).setAttribute('action', routeUpdate);
           }
         })
         
         $('#updateModal').modal('show');
     });
+        
+    $(document).on("click", "#deleteAction", function () {
+        id = $(this).data('id');
+        var routeDelete = "{{ route('delete_ssd',":id") }}";
+        routeDelete = routeDelete.replace(':id',id);
 
+        $("#delete").get(0).setAttribute('action', routeDelete);
+        $("#delete").submit();
+    });
     </script>
 @endpush

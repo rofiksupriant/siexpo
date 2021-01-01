@@ -3,72 +3,75 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Processor;
+use App\Models\RandomAccessMemory;
 use Illuminate\Http\Request;
 
 class RamController extends Controller
 {
-    protected $route = "admin/processor";
+    protected $route = "ram";
 
     public function index()
     {
-        $processors = Processor::paginate(15);
+        $rams = RandomAccessMemory::with('brand')->orderBy('created_at','desc')->paginate(10);
         $parentMenu = "Master Data";
-        $menu = "Processor";
-        $brands = Processor::brandDropdown();
+        $menu = "RAM";
+        $brands = RandomAccessMemory::brandDropdown();
 
-        return view('pages.admin.processor', compact('processors', 'menu', 'brands', 'parentMenu'));
+        return view('pages.admin.ram', compact('rams', 'menu', 'brands', 'parentMenu'));
     }
 
     public function create(Request $request)
     {
         $request->validate([
-            'name'  => 'required|string',
-            'price' => 'required|numeric',
-            'brand' => 'required|numeric'
+            'name'     => 'required|string',
+            'price'    => 'required|numeric',
+            'size'     => 'required|numeric',
+            'brand_id' => 'nullable|exists:brands,id'
         ]);
 
-        $processor = new Processor();
-        $processor->name = $request->name;
-        $processor->price = $request->price;
-        $processor->brand = $request->brand;
-        $processor->save();
+        $ram = new RandomAccessMemory();
 
-        return redirect($this->route);
+        $ram->name     = $request->name;
+        $ram->price    = $request->price;
+        $ram->size     = $request->size;
+        $ram->brand_id = $request->brand_id;
+        $ram->save();
+
+        return redirect()->route($this->route);
     }
 
     public function edit($id)
     {
-        $processor = Processor::findOrFail($id);
+        $ram = RandomAccessMemory::findOrFail($id);
 
-        $processor->brand_text = $processor->brandText();
-
-        return $processor;
+        return $ram;
     }
 
     public function update(Request $request)
     {
         $request->validate([
-            'name'  => 'required|string',
-            'price' => 'required|numeric',
-            'brand' => 'required|numeric'
+            'name'     => 'required|string',
+            'price'    => 'required|numeric',
+            'size'     => 'required|numeric',
+            'brand_id' => 'nullable|numeric|exists:brands,id'
         ]);
 
-        $processor = Processor::findOrFail($request->id);
+        $ram = RandomAccessMemory::findOrFail($request->id);
 
-        $processor->name = $request->name;
-        $processor->price = $request->price;
-        $processor->brand = $request->brand;
+        $ram->name     = $request->name;
+        $ram->price    = $request->price;
+        $ram->size     = $request->size;
+        $ram->brand_id = $request->brand_id;
 
-        $processor->save();
+        $ram->save();
 
-        return redirect('admin/processor');
+        return redirect()->route($this->route);
     }
 
     public function delete($id)
     {
-        Processor::findOrFail($id)->delete();
+        RandomAccessMemory::findOrFail($id)->delete();
 
-        return redirect('admin/processor');
+        return redirect()->route($this->route);
     }
 }

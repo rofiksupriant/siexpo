@@ -9,13 +9,25 @@ class Motherboard extends Model
 {
     use HasFactory;
 
-    public function processors()
+    public function processorBrand()
     {
-        return $this->belongsToMany(Processor::class, 'processor_brand', 'brand');
+        return $this->belongsTo(Brand::class, 'processor_brand_id', 'id');
     }
 
-    public function processorBrandText()
+    protected $hidden = [
+        'updated_at',
+        'created_at'
+    ];
+
+    public static function brandDropdown()
     {
-        return Processor::brandDropdown()[$this->processor_brand];
+        $brands = Brand::where('product_type', Brand::MOTHERBOARD)->get();
+
+        return $brands;
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
 }

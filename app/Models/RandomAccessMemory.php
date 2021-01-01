@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class RandomAccessMemory extends Model
 {
     use HasFactory;
+
+    protected $hidden = [
+        'updated_at',
+        'created_at'
+    ];
+
+    public static function brandDropdown()
+    {
+        $brands = Brand::where('product_type', Brand::RAM)->get();
+
+        return $brands;
+    }
+    
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
+    }
 }

@@ -1,0 +1,147 @@
+[
+    {
+        "name": "SSD KLEVV SSD NEO N400 120GB / SSD 120GB",
+        "price": 275000,
+        "capacity": 120
+    },
+    {
+        "name": "Apacer AS340 120GB Panther",
+        "price": 325000,
+        "capacity": 120
+    },
+    {
+        "name": "WDC Green PC SSD 120GB",
+        "price": 375000,
+        "capacity": 120
+    },
+    {
+        "name": "ADATA SSD SU650 120GB SATA III ( R/W Up to 520 / 450MB/s )",
+        "price": 300000,
+        "capacity": 120
+    },
+    {
+        "name": "Galax SSD Gamer V Series 120GB (R:528MB/S W:447 MB/s)",
+        "price": 300000,
+        "capacity": 120
+    },
+    {
+        "name": "Apacer AS2280P4 256GB M.2 NVME PCIe 3.0 x4",
+        "price": 650000,
+        "capacity": 250
+    },
+    {
+        "name": "KLEVV SSD CRAS C710 256GB M.2 2280 NVMe PCle Gen3 x4",
+        "price": 575000,
+        "capacity": 250
+    },
+    {
+        "name": "Team M.2 2280 TM8FP4256G0C101 - 256GB NVME ",
+        "price": 775000,
+        "capacity": 250
+    },
+    {
+        "name": "ADATA SSD RGB XPG SPECTRIX S40G 256GB PCIE GEN3X4 - AS40G-256GT-C",
+        "price": 900000,
+        "capacity": 250
+    },
+    {
+        "name": "SSD KLEVV SSD NEO N400 240GB",
+        "price": 425000,
+        "capacity": 250
+    },
+    {
+        "name": "Samsung SSD 970 EVO PLUS M.2 250GB MZ-V7S250BW - Grs 5th",
+        "price": 1100000,
+        "capacity": 250
+    },
+    {
+        "name": "Samsung SSD 860 EVO 250GB - Grs 5th",
+        "price": 700000,
+        "capacity": 250
+    },
+    {
+        "name": "SSD KLEVV SSD NEO N400 480GB / SSD 480GB",
+        "price": 800000,
+        "capacity": 512
+    },
+    {
+        "name": "ADATA SSD SU650 480GB SATA III ( R/W Up to 520 / 450MB/s )",
+        "price": 775000,
+        "capacity": 512
+    },
+    {
+        "name": "WDC Black PC SSD 500GB M.2 NVMe PCIe",
+        "price": 1450000,
+        "capacity": 512
+    },
+    {
+        "name": "Samsung SSD 970 EVO PLUS M.2 500GB MZ-V7S500BW - Grs 5th",
+        "price": 1750000,
+        "capacity": 512
+    },
+    {
+        "name": "Samsung SSD 860 EVO 500GB - Grs 5th",
+        "price": 1100000,
+        "capacity": 512
+    },
+    {
+        "name": "Team T253X6512G0C101 CX2 512GB / SSD 512GB",
+        "price": 900000,
+        "capacity": 512
+    },
+    {
+        "name": "KLEVV SSD CRAS C710 512GB M.2 2280 NVMe PCle Gen3 x4 / SSD 512GB",
+        "price": 950000,
+        "capacity": 512
+    },
+    {
+        "name": "Apacer AS350 512GB Panther / SSD 512GB",
+        "price": 850000,
+        "capacity": 512
+    },
+    {
+        "name": "Team M.2 2280 TM8FP4512G0C101 - 512GB R 3000MB/s - PCI-e 3.0 x4 With N",
+        "price": 1250000,
+        "capacity": 512
+    },
+    {
+        "name": "KLEVV SSD RGB CRAS C700 960GB PCIE GEN3X4 / SSD 960GB",
+        "price": 1950000,
+        "capacity": 1024
+    },
+    {
+        "name": "ADATA SSD SU650 960GB SATA III ( R/W Up to 520 / 450MB/s )",
+        "price": 1450000,
+        "capacity": 1024
+    },
+    {
+        "name": "Corsair 960GB CSSD-F960GBMP510 Force Series MP510 - M.2 NVMe PCIe x4",
+        "price": 2750000,
+        "capacity": 1024
+    },
+    {
+        "name": "Team T253X61TG0C101 CX2 1TB / SSD 1TB",
+        "price": 1450000,
+        "capacity": 1024
+    },
+    {
+        "name": "V-GeN SSD 1TB",
+        "price": 1650000,
+        "capacity": 1024
+    },
+    {
+        "name": "KLEVV SSD CRAS C710 1TB M.2 2280 NVMe PCle Gen3 x4 / SSD 1TB",
+        "price": 1700000,
+        "capacity": 1024
+    },
+    {
+        "name": "ADATA SX6000 Lite 1TB M.2 NVME R 1800MB/S W 1200MB/S",
+        "price": 1700000,
+        "capacity": 1024
+    },
+    {
+        "name": "ADATA SSD RGB XPG SPECTRIX S40G 1TB PCIE GEN3X4 / SSD M.2 1TB",
+        "price": 2300000,
+        "capacity": 1024
+    }
+]
