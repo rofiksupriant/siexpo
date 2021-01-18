@@ -21,6 +21,8 @@ class Brand extends Model
     const VGA         = 9;
     const PSU         = 10;
     const MOUSE_PAD   = 11;
+    const FAN         = 12;
+    const CASING      = 13;
 
     protected $hidden = [
         'updated_at',
@@ -40,6 +42,8 @@ class Brand extends Model
             self::KEYBOARD => "Keyboard",
             self::VGA => "VGA",
             self::PSU => "Power Suply",
+            self::FAN => "Fan",
+            self::CASING => "Casing",
         ];
     }
 

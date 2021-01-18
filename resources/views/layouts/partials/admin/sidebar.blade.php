@@ -83,6 +83,16 @@
                   <p>VGA</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('fan')}}" class="nav-link pl-4 {{$menu == 'Fan' ? 'active' : ''}}">
+                  <p>Fan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('casing')}}" class="nav-link pl-4 {{$menu == 'Casing' ? 'active' : ''}}">
+                  <p>Casing</p>
+                </a>
+              </li>
           </li>
         </ul>
       </nav>

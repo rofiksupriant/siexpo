@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Casing;
+use App\Models\Fan;
 use App\Models\HardDiskDrive;
 use App\Models\Keyboard;
 use App\Models\Monitor;
@@ -40,6 +42,8 @@ class DataSeeder extends Seeder
         $rams         = json_decode(file_get_contents(database_path("/data/rams.json")), true);
         $ssd          = json_decode(file_get_contents(database_path("/data/ssd.json")), true);
         $vgaCards     = json_decode(file_get_contents(database_path("/data/vgaCards.json")), true);
+        $fans         = json_decode(file_get_contents(database_path("/data/fans.json")), true);
+        $casings      = json_decode(file_get_contents(database_path("/data/casings.json")), true);
 
         // insert data to DB
         HardDiskDrive::insert($hardDisks);
@@ -53,6 +57,8 @@ class DataSeeder extends Seeder
         RandomAccessMemory::insert($rams);
         SolidStateDrive::insert($ssd);
         VgaCard::insert($vgaCards);
+        Fan::insert($fans);
+        Casing::insert($fans);
 
         // update all data ( created_at && updated_at )
         DB::table('hard_disk_drives')->update(['created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
@@ -66,6 +72,8 @@ class DataSeeder extends Seeder
         DB::table('random_access_memories')->update(['created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
         DB::table('solid_state_drives')->update(['created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
         DB::table('vga_cards')->update(['created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
+        DB::table('fans')->update(['created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
+        DB::table('casings')->update(['created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
 
         // !!! DON'T TOUCH THIS !!! - end
     }

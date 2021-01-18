@@ -1,0 +1,29 @@
+[
+    { "name": "Fan Casing Standard 12CM", "price": 25000 },
+    {
+        "name": "CUBE GAMING BRIGHT 15 LED GREEN FAN 12CM 1300RPM",
+        "price": 50000
+    },
+    { "name": "Aerocool Frost 12CM RGB LED", "price": 60000 },
+    { "name": "Deepcool Gammaxx 400 V2 - Red Fan 12CM LED", "price": 300000 },
+    { "name": "PCCooler GI-D56V HALO RGB CPU Cooler", "price": 350000 },
+    { "name": "Noctua Premium Fan 14CM 1300RPM - NF-P14 FLX", "price": 375000 },
+    {
+        "name": "Enermax ETS-T40F-TB Multi Socket With Dual Fan 12CM",
+        "price": 375000
+    },
+    { "name": "PCCooler CL-120 Liquid Cooler", "price": 510000 },
+    {
+        "name": "Raijintek THEMIS Evo Dual Fan - Advanced Performance - Germany Brand",
+        "price": 550000
+    },
+    { "name": "Cooler Master HYPER 212X TURBO", "price": 550000 },
+    {
+        "name": "Aerocool Mirage L240 240MM ARGB Liquid Cooler",
+        "price": 1050000
+    },
+    { "name": "Noctua NH-U9 TR4-SP3 For AMD TR4", "price": 1100000 },
+    { "name": "Aigo DarkFlash DX360 RGB Liquid Cooler", "price": 1200000 },
+    { "name": "PCCooler GI-CX360 ARGB Liquid Cooler", "price": 1300000 },
+    { "name": "Cooler Master MasterLiquid ML360L ARGB V2", "price": 1750000 }
+]

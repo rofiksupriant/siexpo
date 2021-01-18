@@ -3,7 +3,17 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Casing;
+use App\Models\HardDiskDrive;
+use App\Models\Keyboard;
+use App\Models\Motherboard;
+use App\Models\Mouse;
+use App\Models\MousePad;
+use App\Models\PowerSuplyUnit;
 use App\Models\Processor;
+use App\Models\RandomAccessMemory;
+use App\Models\SolidStateDrive;
+use App\Models\VgaCard;
 use Illuminate\Http\Request;
 
 class SimulasiController extends Controller
@@ -15,14 +25,49 @@ class SimulasiController extends Controller
      */
     public function index()
     {
-        return view('pages.user.simulasi');
+        $randomAccessMemories = RandomAccessMemory::all();
+        $hardDisks            = HardDiskDrive::all();
+        $solidStateDrives     = SolidStateDrive::all();
+        $casings              = Casing::all();
+        $vgaCards             = VgaCard::all();
+        $powerSuplyUnits      = PowerSuplyUnit::all();
+        $keyboards            = Keyboard::all();
+        $mice                 = Mouse::all();
+        $mousePads            = MousePad::all();
+
+        return view('pages.user.simulasi', compact(
+            'randomAccessMemories',
+            'hardDisks',
+            'solidStateDrives',
+            'casings',
+            'vgaCards',
+            'powerSuplyUnits',
+            'keyboards',
+            'mice',
+            'mousePads'
+        ));
     }
 
-    public function processor(Request $request)
+    public function processors(Request $request)
     {
-        $processors = Processor::where('brand', $request->brand)->get();
+        $processors = Processor::where(function ($query) use ($request) {
+            if ($request->filled('brand_id')) {
+                $query->where('brand_id', $request->brand_id);
+            }
+        })->get();
 
         return $processors;
+    }
+
+    public function motherboards(Request $request)
+    {
+        $motherboards = Motherboard::where(function ($query) use ($request) {
+            if ($request->filled('processor_brand_id')) {
+                $query->where('processor_brand_id', $request->processor_brand_id);
+            }
+        })->get();
+
+        return $motherboards;
     }
 
     /**

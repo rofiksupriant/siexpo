@@ -7,11 +7,14 @@ use App\Http\Controllers\Admin\ProcessorController;
 use App\Http\Controllers\Admin\RamController;
 use App\Http\Controllers\Admin\SsdController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CasingController;
+use App\Http\Controllers\Admin\FanController;
 use App\Http\Controllers\Admin\KeyboardController;
 use App\Http\Controllers\Admin\MonitorController;
 use App\Http\Controllers\Admin\MouseController;
 use App\Http\Controllers\Admin\MousePadController;
 use App\Http\Controllers\Admin\VgaController;
+use App\Http\Controllers\User\SimulasiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,9 +33,17 @@ Route::get('/', function () {
 });
 
 Route::get('/simulasi', 'User\SimulasiController@index');
-Route::post('/simulasi/processor', 'User\SimulasiController@processor');
+// Route::post('/simulasi/processor', 'User\SimulasiController@processor');
 
 Auth::routes();
+Route::prefix('user')->group(function () {
+    Route::prefix('simulasi')->group(function () {
+        Route::get('/',                 [SimulasiController::class, 'index']);
+        Route::post('processors',       [SimulasiController::class, 'processors']);
+        Route::post('motherboards',     [SimulasiController::class, 'motherboards']);
+        Route::get('form_update/{id}',  [SimulasiController::class, 'edit']);
+    });
+});
 
 Route::prefix('admin')->group(function () {
 
@@ -124,6 +135,22 @@ Route::prefix('admin')->group(function () {
             Route::get('form_update/{id}',  [MousePadController::class, 'edit'])->name('form_update_mousePad');
             Route::post('update/{id}',      [MousePadController::class, 'update'])->name('update_mousePad');
             Route::delete('delete/{id}',    [MousePadController::class, 'delete'])->name('delete_mousePad');
+        });
+
+        Route::prefix('fan')->group(function () {
+            Route::get('/',                 [FanController::class, 'index'])->name('fan');
+            Route::post('create',           [FanController::class, 'create'])->name('create_fan');
+            Route::get('form_update/{id}',  [FanController::class, 'edit'])->name('form_update_fan');
+            Route::post('update/{id}',      [FanController::class, 'update'])->name('update_fan');
+            Route::delete('delete/{id}',    [FanController::class, 'delete'])->name('delete_fan');
+        });
+
+        Route::prefix('casing')->group(function () {
+            Route::get('/',                 [CasingController::class, 'index'])->name('casing');
+            Route::post('create',           [CasingController::class, 'create'])->name('create_casing');
+            Route::get('form_update/{id}',  [CasingController::class, 'edit'])->name('form_update_casing');
+            Route::post('update/{id}',      [CasingController::class, 'update'])->name('update_casing');
+            Route::delete('delete/{id}',    [CasingController::class, 'delete'])->name('delete_casing');
         });
     });
 });

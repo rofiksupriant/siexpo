@@ -8,7 +8,7 @@
     
     @yield('content')
     
-    @include('layouts.partials.user.footer')
+    {{-- @include('layouts.partials.user.footer') --}}
     
     @include('layouts.partials.user.scripts')
     
