@@ -4,14 +4,17 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Casing;
+use App\Models\Fan;
 use App\Models\HardDiskDrive;
 use App\Models\Keyboard;
+use App\Models\Monitor;
 use App\Models\Motherboard;
 use App\Models\Mouse;
 use App\Models\MousePad;
 use App\Models\PowerSuplyUnit;
 use App\Models\Processor;
 use App\Models\RandomAccessMemory;
+use App\Models\Simulasi;
 use App\Models\SolidStateDrive;
 use App\Models\VgaCard;
 use Illuminate\Http\Request;
@@ -34,6 +37,8 @@ class SimulasiController extends Controller
         $keyboards            = Keyboard::all();
         $mice                 = Mouse::all();
         $mousePads            = MousePad::all();
+        $fans                 = Fan::all();
+        $monitors             = Monitor::all();
 
         return view('pages.user.simulasi', compact(
             'randomAccessMemories',
@@ -44,7 +49,9 @@ class SimulasiController extends Controller
             'powerSuplyUnits',
             'keyboards',
             'mice',
-            'mousePads'
+            'mousePads',
+            'fans',
+            'monitors'
         ));
     }
 
@@ -75,20 +82,27 @@ class SimulasiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
-    }
+        $simulasi = new Simulasi();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $simulasi->processor_id   = $request->processor;
+        $simulasi->motherboard_id = $request->motherboard;
+        $simulasi->ram_id         = $request->ram;
+        $simulasi->hdd_id         = $request->hdd;
+        $simulasi->ssd_id         = $request->ssd;
+        $simulasi->casing_id      = $request->casing;
+        $simulasi->vga_id         = $request->vga;
+        $simulasi->psu_id         = $request->psu;
+        $simulasi->keyboard_id    = $request->keyboard;
+        $simulasi->mouse_id       = $request->mouse;
+        $simulasi->mousepad_id    = $request->mousePad;
+        $simulasi->monitor_id     = $request->monitor;
+        $simulasi->fan_id         = $request->fan;
+
+        $simulasi->save();
+
+        return redirect('/');
     }
 
     /**

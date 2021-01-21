@@ -8,6 +8,7 @@ document.getElementById("compatibility").addEventListener("change", function() {
         $("#processor-brand").addClass("d-none");
         setupAjax();
         processorsDropdown();
+        motherboardsDropdown();
     }
 });
 
@@ -70,7 +71,6 @@ function processorsDropdown(brandId = null) {
         },
         success: function(processors) {
             deleteProcessorsDropdown();
-
             processors.forEach(processor => {
                 $("<option/>", {
                     text: processor.name +
@@ -84,7 +84,7 @@ function processorsDropdown(brandId = null) {
             });
         },
         error: function(data, textStatus, errorThrown) {
-            console.log(data);
+            console.log(errorThrown);
         }
     });
 }
@@ -98,7 +98,6 @@ function motherboardsDropdown(processorBrandId = null) {
         },
         success: function(motherboards) {
             deleteMotherboardsDropdown();
-
             motherboards.forEach(motherboard => {
                 $("<option/>", {
                     text: motherboard.name +
@@ -111,8 +110,8 @@ function motherboardsDropdown(processorBrandId = null) {
                 }).appendTo("#motherboard");
             });
         },
-        error: function(data, textStatus, errorThrown) {
-            console.log(data);
+        error: function(error) {
+            console.log(error);
         }
     });
 }
@@ -139,12 +138,14 @@ function onChangeUpdatePrice(el, y) {
 
             $("#processor_price").data("price", price);
             $("#processor_price").val(price);
+            updateGrandTotal();
             break;
         case "processor_qty":
             price = $("#processor :selected").data("price") * 1 * el.val();
 
             $("#processor_price").data("price", price);
             $("#processor_price").val(price);
+            updateGrandTotal();
             break;
 
             // harga motherboard
@@ -154,6 +155,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#motherboard_price").data("price", price);
             $("#motherboard_price").val(price);
+            updateGrandTotal();
             break;
 
         case "motherboard_qty":
@@ -161,6 +163,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#motherboard_price").data("price", price);
             $("#motherboard_price").val(price);
+            updateGrandTotal();
             break;
 
             // harga ram
@@ -170,6 +173,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#ram_price").data("price", price);
             $("#ram_price").val(price);
+            updateGrandTotal();
             break;
 
         case "ram_qty":
@@ -177,6 +181,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#ram_price").data("price", price);
             $("#ram_price").val(price);
+            updateGrandTotal();
             break;
 
             // harga hdd
@@ -186,6 +191,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#hdd_price").data("price", price);
             $("#hdd_price").val(price);
+            updateGrandTotal();
             break;
 
         case "hdd_qty":
@@ -193,6 +199,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#hdd_price").data("price", price);
             $("#hdd_price").val(price);
+            updateGrandTotal();
             break;
 
             // harga ssd
@@ -202,6 +209,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#ssd_price").data("price", price);
             $("#ssd_price").val(price);
+            updateGrandTotal();
             break;
 
         case "ssd_qty":
@@ -209,6 +217,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#ssd_price").data("price", price);
             $("#ssd_price").val(price);
+            updateGrandTotal();
             break;
 
             // harga casing
@@ -218,6 +227,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#casing_price").data("price", price);
             $("#casing_price").val(price);
+            updateGrandTotal();
             break;
 
         case "casing_qty":
@@ -225,6 +235,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#casing_price").data("price", price);
             $("#casing_price").val(price);
+            updateGrandTotal();
             break;
 
             // harga vga
@@ -234,6 +245,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#vga_price").data("price", price);
             $("#vga_price").val(price);
+            updateGrandTotal();
             break;
 
         case "vga_qty":
@@ -241,6 +253,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#vga_price").data("price", price);
             $("#vga_price").val(price);
+            updateGrandTotal();
             break;
 
             // harga psu
@@ -250,6 +263,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#psu_price").data("price", price);
             $("#psu_price").val(price);
+            updateGrandTotal();
             break;
 
         case "psu_qty":
@@ -257,6 +271,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#psu_price").data("price", price);
             $("#psu_price").val(price);
+            updateGrandTotal();
             break;
 
             // harga keyboard
@@ -266,6 +281,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#keyboard_price").data("price", price);
             $("#keyboard_price").val(price);
+            updateGrandTotal();
             break;
 
         case "keyboard_qty":
@@ -273,6 +289,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#keyboard_price").data("price", price);
             $("#keyboard_price").val(price);
+            updateGrandTotal();
             break;
 
             // harga mouse
@@ -282,6 +299,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#mouse_price").data("price", price);
             $("#mouse_price").val(price);
+            updateGrandTotal();
             break;
 
         case "mouse_qty":
@@ -289,6 +307,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#mouse_price").data("price", price);
             $("#mouse_price").val(price);
+            updateGrandTotal();
             break;
 
             // harga mousePad
@@ -298,6 +317,7 @@ function onChangeUpdatePrice(el, y) {
 
             $("#mousePad_price").data("price", price);
             $("#mousePad_price").val(price);
+            updateGrandTotal();
             break;
 
         case "mousePad_qty":
@@ -305,10 +325,69 @@ function onChangeUpdatePrice(el, y) {
 
             $("#mousePad_price").data("price", price);
             $("#mousePad_price").val(price);
+            updateGrandTotal();
+            break;
+
+        case "monitor":
+            $("#monitor_qty").val(1);
+            price = el.find(":selected").data("price");
+
+            $("#monitor_price").data("price", price);
+            $("#monitor_price").val(price);
+            updateGrandTotal();
+            break;
+
+        case "monitor_qty":
+            price = $("#monitor :selected").data("price") * 1 * el.val();
+
+            $("#monitor_price").data("price", price);
+            $("#monitor_price").val(price);
+            updateGrandTotal();
+            break;
+
+        case "fan":
+            $("#fan_qty").val(1);
+            price = el.find(":selected").data("price");
+
+            $("#fan_price").data("price", price);
+            $("#fan_price").val(price);
+            updateGrandTotal();
+            break;
+
+        case "fan_qty":
+            price = $("#fan :selected").data("price") * 1 * el.val();
+
+            $("#fan_price").data("price", price);
+            $("#fan_price").val(price);
+            updateGrandTotal();
             break;
 
         default:
             break;
     }
 
+}
+
+function updateGrandTotal() {
+    let grandTotal = $("#processor_price").val() * 1 +
+        $("#motherboard_price").val() * 1 +
+        $("#ram_price").val() * 1 +
+        $("#hdd_price").val() * 1 +
+        $("#ssd_price").val() * 1 +
+        $("#casing_price").val() * 1 +
+        $("#vga_price").val() * 1 +
+        $("#psu_price").val() * 1 +
+        $("#keyboard_price").val() * 1 +
+        $("#mouse_price").val() * 1 +
+        $("#mousePad_price").val() * 1 +
+        $("#fan_price").val() * 1 +
+        $("#monitor_price").val() * 1;
+
+    $("#grand_total").val(grandTotal);
+}
+
+function resetSimulation() {
+    $(document).ready(function() {
+        $('form').each(function() { this.reset() });
+    });
 }

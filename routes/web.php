@@ -42,6 +42,7 @@ Route::prefix('user')->group(function () {
         Route::post('processors',       [SimulasiController::class, 'processors']);
         Route::post('motherboards',     [SimulasiController::class, 'motherboards']);
         Route::get('form_update/{id}',  [SimulasiController::class, 'edit']);
+        Route::post('create',           [SimulasiController::class, 'create'])->name('create_simulasi');
     });
 });
 

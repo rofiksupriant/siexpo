@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="container container-bg rounded mt-5 mb-5 px-5 py-5">
-        <form action="" method="post">
+        <form id="form-simulation" action="{{ route('create_simulasi') }}" method="post">
+            @csrf
             <h5>KOMPATIBILITAS</h5>
             <hr>
             <div id="compatibility" class="form-group row">
@@ -26,6 +27,9 @@
                 </div>
             </div>
 
+            <br>
+            <h5>KOMPONEN UTAMA</h5>
+            <hr>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label col-form-label-sm">Pilih Processor</label> 
                 <div class="col-sm-6">
@@ -273,7 +277,76 @@
                 </div>
             </div>
 
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label col-form-label-sm">Pilih Monitor</label> 
+                <div class="col-sm-6">
+                    <select class="form-control form-control-sm select2 select2-hidden-accessible" id="monitor" name="monitor" data-text="monitor" data-select2-id="10" tabindex="-1" aria-hidden="true"  onchange="return onChangeUpdatePrice($(this), 'q');">
+                        <option data-type="" data-item="" data-price="0" value="">--Pilih Mouse Pad--</option>
+                        @foreach ($monitors as $monitor)
+                            <option data-type="" data-item="" data-price="{{$monitor->price}}" value="">{{$monitor->name .' - '. $monitor->price}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            
+                <div class="col-sm-1">
+                    <input type="number" class="form-control form-control-sm cart-quantity" id="monitor_qty" name="monitor_qty" min="1" value="1" onkeyup="valid_number(this)" onchange="return onChangeUpdatePrice($(this), 'q');"> 
+                </div>
+            
+                <div class="col-sm-2">
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-prepend"> <span class="input-group-text">Rp</span> </div>
+                        <input type="text" class="form-control form-control-sm text-right" id="monitor_price" name="monitor_price" value="0" readonly="" data-price="0"> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label col-form-label-sm">Pilih Fan Cooler</label> 
+                <div class="col-sm-6">
+                    <select class="form-control form-control-sm select2 select2-hidden-accessible" id="fan" name="fan" data-text="fan" data-select2-id="10" tabindex="-1" aria-hidden="true"  onchange="return onChangeUpdatePrice($(this), 'q');">
+                        <option data-type="" data-item="" data-price="0" value="">--Pilih Mouse Pad--</option>
+                        @foreach ($fans as $fan)
+                            <option data-type="" data-item="" data-price="{{$fan->price}}" value="">{{$fan->name .' - '. $fan->price}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            
+                <div class="col-sm-1">
+                    <input type="number" class="form-control form-control-sm cart-quantity" id="fan_qty" name="fan_qty" min="1" value="1" onkeyup="valid_number(this)" onchange="return onChangeUpdatePrice($(this), 'q');"> 
+                </div>
+            
+                <div class="col-sm-2">
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-prepend"> <span class="input-group-text">Rp</span> </div>
+                        <input type="text" class="form-control form-control-sm text-right" id="fan_price" name="fan_price" value="0" readonly="" data-price="0"> 
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+            <div class="form-group row">
+                <label class="col-sm-8 col-form-label col-form-label-sm text-right">Grand Total</label> 
+                <div class="col-sm-3">
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-prepend"> <span class="input-group-text">Rp</span> </div>
+                        <input type="text" class="form-control form-control-sm text-right" id="grand_total" name="grand_total" value="0" readonly="" data-price="0"> 
+                    </div>
+                </div>
+            </div> 
+
         </form>
+
+        <div class="form-group row">
+            <div class="col-sm-11 text-right"> 
+                <button type="submit" class="btn btn-sm btn-warning mt-2" id="reset_btn" value="reset" onclick="resetSimulation(0);">
+                    <i class="fa fa-redo-alt"></i> Reset
+                </button> 
+                {{-- <a class="btn btn-sm btn-success text-white mt-2" href="https://www.enterkomputer.com/simulasi/temp_preview/" target="_blank" name="temp_btn" id="temp_btn"><i class="fa fa-eye"></i>Temp Preview</a>  --}}
+                <button type="submit" form="form-simulation" class="btn btn-sm btn-primary mt-2" id="save_btn" value="Save">
+                    <i class="fa fa-save"></i> Simpan
+                </button> 
+            </div>
+        </div>
     </div>
 
 @endsection
