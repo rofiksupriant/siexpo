@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\MouseController;
 use App\Http\Controllers\Admin\MousePadController;
 use App\Http\Controllers\Admin\VgaController;
 use App\Http\Controllers\User\SimulasiController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,12 +31,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect('simulasi');
-});
+})->name("home");
 
 Route::get('/simulasi', 'User\SimulasiController@index');
 // Route::post('/simulasi/processor', 'User\SimulasiController@processor');
 
 Auth::routes();
+
 Route::prefix('user')->group(function () {
     Route::prefix('simulasi')->group(function () {
         Route::get('/',                 [SimulasiController::class, 'index']);
@@ -46,7 +48,8 @@ Route::prefix('user')->group(function () {
     });
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth', 'role:' . User::ADMIN_ROLE)->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
 
     Route::prefix('master_data')->group(function () {
 
@@ -156,9 +159,4 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-
-Route::get('/admin', [HomeController::class, 'index'])->name('home');
-
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

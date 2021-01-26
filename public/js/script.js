@@ -391,3 +391,31 @@ function resetSimulation() {
         $('form').each(function() { this.reset() });
     });
 }
+
+function saveSimulationModal() {
+    if (!document.getElementById("logout-form")) {
+        // $("#saveSimulationModalWithRegister").modal("show");
+        alert("Login Terlebih Dahulu Untuk Menyimpan !");
+    } else {
+        document.getElementById('form-simulation').submit();
+    }
+
+}
+
+function saveSimulation() {
+    console.log("ayee");
+    var formData = $("#form-simulation").serializeArray();
+    var url = "{{ route('create_simulasi') }}";
+
+    console.log(formData);
+    // $.ajax({
+    //     url: url,
+    //     type: 'POST',
+    //     data: formData
+    // });
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: formData,
+    });
+}

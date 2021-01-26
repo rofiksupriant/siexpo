@@ -53,6 +53,6 @@ class LoginController extends Controller
 
         return $request->wantsJson()
             ? new JsonResponse([], 204)
-            : redirect()->intended($this->guard()->user()->role == User::ADMIN_ROLE ? 'admin' : '/simulasi');
+            : redirect()->intended($this->guard()->user()->role == User::ADMIN_ROLE ? '/admin' : '/simulasi');
     }
 }

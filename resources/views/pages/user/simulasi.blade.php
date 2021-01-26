@@ -19,7 +19,7 @@
             <div id="processor-brand" class="form-group row" >
                 <label class="col-sm-2 col-form-label col-form-label-sm">Pilih Brand Processor</label> 
                 <div class="col-sm-6">
-                    <select class="form-control form-control-sm " id="processor-brand" name="processor-brand" tabindex="-1" aria-hidden="true">
+                    <select class="form-control form-control-sm " id="processor-brand" name="processor_brand" tabindex="-1" aria-hidden="true">
                         <option selected value="">--Pilih Brand Processor--</option>
                         <option value="1">INTEL</option>
                         <option value="2">AMD</option>
@@ -99,7 +99,7 @@
                     <select class="form-control form-control-sm select2 select2-hidden-accessible" id="hdd" name="hdd" data-text="HDD" data-select2-id="10" tabindex="-1" aria-hidden="true"  onchange="return onChangeUpdatePrice($(this), 'q');">
                         <option data-type="" data-item="" data-price="0" value="">--Pilih Hard Disk--</option>
                         @foreach ($hardDisks as $hdd)
-                            <option data-type="" data-item="" data-price="{{$hdd->price}}" value="">{{$hdd->name .' - '.$hdd->price}}</option>
+                            <option data-type="" data-item="" data-price="{{$hdd->price}}" value="{{$hdd->id}}">{{$hdd->name .' - '.$hdd->price}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -122,7 +122,7 @@
                     <select class="form-control form-control-sm select2 select2-hidden-accessible" id="ssd" name="ssd" data-text="ssd" data-select2-id="10" tabindex="-1" aria-hidden="true"  onchange="return onChangeUpdatePrice($(this), 'q');">
                         <option data-type="" data-item="" data-price="0" value="">--Pilih SSD--</option>
                         @foreach ($solidStateDrives as $ssd)
-                            <option data-type="" data-item="" data-price="{{$ssd->price}}" value="">{{$ssd->name .' - '. $ssd->price}}</option>
+                            <option data-type="" data-item="" data-price="{{$ssd->price}}" value="{{$ssd->id}}">{{$ssd->name .' - '. $ssd->price}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -145,7 +145,7 @@
                     <select class="form-control form-control-sm select2 select2-hidden-accessible" id="casing" name="casing" data-text="casing" data-select2-id="10" tabindex="-1" aria-hidden="true"  onchange="return onChangeUpdatePrice($(this), 'q');">
                         <option data-type="" data-item="" data-price="0" value="">--Pilih Casing--</option>
                         @foreach ($casings as $casing)
-                            <option data-type="" data-item="" data-price="{{$casing->price}}" value="">{{$casing->name .' - '. $casing->price}}</option>
+                            <option data-type="" data-item="" data-price="{{$casing->price}}" value="{{$casing->id}}">{{$casing->name .' - '. $casing->price}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -168,7 +168,7 @@
                     <select class="form-control form-control-sm select2 select2-hidden-accessible" id="vga" name="vga" data-text="vga" data-select2-id="10" tabindex="-1" aria-hidden="true"  onchange="return onChangeUpdatePrice($(this), 'q');">
                         <option data-type="" data-item="" data-price="0" value="">--Pilih VGA--</option>
                         @foreach ($vgaCards as $vga)
-                            <option data-type="" data-item="" data-price="{{$vga->price}}" value="">{{$vga->name .' - '. $vga->price}}</option>
+                            <option data-type="" data-item="" data-price="{{$vga->price}}" value="{{$vga->id}}">{{$vga->name .' - '. $vga->price}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -191,7 +191,7 @@
                     <select class="form-control form-control-sm select2 select2-hidden-accessible" id="psu" name="psu" data-text="psu" data-select2-id="10" tabindex="-1" aria-hidden="true"  onchange="return onChangeUpdatePrice($(this), 'q');">
                         <option data-type="" data-item="" data-price="0" value="">--Pilih PSU--</option>
                         @foreach ($powerSuplyUnits as $psu)
-                            <option data-type="" data-item="" data-price="{{$psu->price}}" value="">{{$psu->name .' - '. $psu->price}}</option>
+                            <option data-type="" data-item="" data-price="{{$psu->price}}" value="{{$psu->id}}">{{$psu->name .' - '. $psu->price}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -214,7 +214,7 @@
                     <select class="form-control form-control-sm select2 select2-hidden-accessible" id="keyboard" name="keyboard" data-text="keyboard" data-select2-id="10" tabindex="-1" aria-hidden="true"  onchange="return onChangeUpdatePrice($(this), 'q');">
                         <option data-type="" data-item="" data-price="0" value="">--Pilih Keyboard--</option>
                         @foreach ($keyboards as $keyboard)
-                            <option data-type="" data-item="" data-price="{{$keyboard->price}}" value="">{{$keyboard->name .' - '. $keyboard->price}}</option>
+                            <option data-type="" data-item="" data-price="{{$keyboard->price}}" value="{{$keyboard->id}}">{{$keyboard->name .' - '. $keyboard->price}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -237,7 +237,7 @@
                     <select class="form-control form-control-sm select2 select2-hidden-accessible" id="mouse" name="mouse" data-text="mouse" data-select2-id="10" tabindex="-1" aria-hidden="true"  onchange="return onChangeUpdatePrice($(this), 'q');">
                         <option data-type="" data-item="" data-price="0" value="">--Pilih Mouse--</option>
                         @foreach ($mice as $mouse)
-                            <option data-type="" data-item="" data-price="{{$mouse->price}}" value="">{{$mouse->name .' - '. $mouse->price}}</option>
+                            <option data-type="" data-item="" data-price="{{$mouse->price}}" value="{{$mouse->id}}">{{$mouse->name .' - '. $mouse->price}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -260,7 +260,7 @@
                     <select class="form-control form-control-sm select2 select2-hidden-accessible" id="mousePad" name="mousePad" data-text="mousePad" data-select2-id="10" tabindex="-1" aria-hidden="true"  onchange="return onChangeUpdatePrice($(this), 'q');">
                         <option data-type="" data-item="" data-price="0" value="">--Pilih Mouse Pad--</option>
                         @foreach ($mousePads as $mousePad)
-                            <option data-type="" data-item="" data-price="{{$mousePad->price}}" value="">{{$mousePad->name .' - '. $mousePad->price}}</option>
+                            <option data-type="" data-item="" data-price="{{$mousePad->price}}" value="{{$mousePad->id}}">{{$mousePad->name .' - '. $mousePad->price}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -283,7 +283,7 @@
                     <select class="form-control form-control-sm select2 select2-hidden-accessible" id="monitor" name="monitor" data-text="monitor" data-select2-id="10" tabindex="-1" aria-hidden="true"  onchange="return onChangeUpdatePrice($(this), 'q');">
                         <option data-type="" data-item="" data-price="0" value="">--Pilih Mouse Pad--</option>
                         @foreach ($monitors as $monitor)
-                            <option data-type="" data-item="" data-price="{{$monitor->price}}" value="">{{$monitor->name .' - '. $monitor->price}}</option>
+                            <option data-type="" data-item="" data-price="{{$monitor->price}}" value="{{$monitor->id}}">{{$monitor->name .' - '. $monitor->price}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -306,7 +306,7 @@
                     <select class="form-control form-control-sm select2 select2-hidden-accessible" id="fan" name="fan" data-text="fan" data-select2-id="10" tabindex="-1" aria-hidden="true"  onchange="return onChangeUpdatePrice($(this), 'q');">
                         <option data-type="" data-item="" data-price="0" value="">--Pilih Mouse Pad--</option>
                         @foreach ($fans as $fan)
-                            <option data-type="" data-item="" data-price="{{$fan->price}}" value="">{{$fan->name .' - '. $fan->price}}</option>
+                            <option data-type="" data-item="" data-price="{{$fan->price}}" value="{{$fan->id}}">{{$fan->name .' - '. $fan->price}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -324,8 +324,14 @@
             </div>
             
             <hr>
-            <div class="form-group row">
-                <label class="col-sm-8 col-form-label col-form-label-sm text-right">Grand Total</label> 
+            <div class="form-group has-error row">
+                <label class="col-sm-2 col-form-label col-form-label-sm">Nama Simulasi</label> 
+                <div class="form-group has-error col-sm-3">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control form-control-sm" id="simulation_name" name="simulation_name" aria-required="true" required>
+                    </div>
+                </div>
+                <label class="col-sm-3 col-form-label col-form-label-sm text-right">Grand Total</label> 
                 <div class="col-sm-3">
                     <div class="input-group input-group-sm">
                         <div class="input-group-prepend"> <span class="input-group-text">Rp</span> </div>
@@ -342,9 +348,15 @@
                     <i class="fa fa-redo-alt"></i> Reset
                 </button> 
                 {{-- <a class="btn btn-sm btn-success text-white mt-2" href="https://www.enterkomputer.com/simulasi/temp_preview/" target="_blank" name="temp_btn" id="temp_btn"><i class="fa fa-eye"></i>Temp Preview</a>  --}}
-                <button type="submit" form="form-simulation" class="btn btn-sm btn-primary mt-2" id="save_btn" value="Save">
+                @auth
+                <button type="submit" class="btn btn-sm btn-primary mt-2" id="save_btn" value="Save">
                     <i class="fa fa-save"></i> Simpan
                 </button> 
+                @else
+                <button type="submit" class="btn btn-sm btn-primary mt-2" id="save_btn" disabled title="Login Untuk Menyimpan" value="Save">
+                    <i class="fa fa-save"></i> Simpan
+                </button> 
+                @endauth
             </div>
         </div>
     </div>

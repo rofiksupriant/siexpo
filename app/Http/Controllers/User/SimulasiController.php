@@ -18,6 +18,7 @@ use App\Models\Simulasi;
 use App\Models\SolidStateDrive;
 use App\Models\VgaCard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SimulasiController extends Controller
 {
@@ -84,21 +85,54 @@ class SimulasiController extends Controller
      */
     public function create(Request $request)
     {
+        $user = Auth::guard()->user();
+
         $simulasi = new Simulasi();
 
-        $simulasi->processor_id   = $request->processor;
+        $simulasi->user_id = $user->id;
+        $simulasi->name = $request->simulation_name;
+
+        $simulasi->compatibility = $request->compatibility;
+        $simulasi->processor_brand_id = $request->processor_brand;
+
+        $simulasi->processor_id = $request->processor;
+        $simulasi->processor_qty = $request->processor_qty;
+
         $simulasi->motherboard_id = $request->motherboard;
-        $simulasi->ram_id         = $request->ram;
-        $simulasi->hdd_id         = $request->hdd;
-        $simulasi->ssd_id         = $request->ssd;
-        $simulasi->casing_id      = $request->casing;
-        $simulasi->vga_id         = $request->vga;
-        $simulasi->psu_id         = $request->psu;
-        $simulasi->keyboard_id    = $request->keyboard;
-        $simulasi->mouse_id       = $request->mouse;
-        $simulasi->mousepad_id    = $request->mousePad;
-        $simulasi->monitor_id     = $request->monitor;
-        $simulasi->fan_id         = $request->fan;
+        $simulasi->motherboard_qty = $request->motherboard_qty;
+
+        $simulasi->ram_id = $request->ram;
+        $simulasi->ram_qty = $request->ram_qty;
+
+        $simulasi->hdd_id = $request->hdd;
+        $simulasi->hdd_qty = $request->hdd_qty;
+
+        $simulasi->ssd_id = $request->ssd;
+        $simulasi->ssd_qty = $request->ssd_qty;
+
+        $simulasi->casing_id = $request->casing;
+        $simulasi->casing_qty = $request->casing_qty;
+
+        $simulasi->vga_id = $request->vga;
+        $simulasi->vga_qty = $request->vga_qty;
+
+        $simulasi->psu_id = $request->psu;
+        $simulasi->psu_qty = $request->psu_qty;
+
+        $simulasi->keyboard_id = $request->keyboard;
+        $simulasi->keyboard_qty = $request->keyboard_qty;
+
+        $simulasi->mouse_id = $request->mouse;
+        $simulasi->mouse_qty = $request->mouse_qty;
+
+        $simulasi->mousepad_id = $request->mousepad;
+        $simulasi->mousepad_qty = $request->mousepad_qty;
+
+        $simulasi->monitor_id = $request->monitor;
+        $simulasi->monitor_qty = $request->monitor_qty;
+
+        $simulasi->fan_id = $request->fan;
+        $simulasi->fan_qty = $request->fan_qty;
 
         $simulasi->save();
 
