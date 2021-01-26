@@ -29,14 +29,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return redirect('simulasi');
 })->name("home");
 
+Route::get('/home', function () {
+    return redirect()->route("home");
+});
+
 Route::get('/simulasi', 'User\SimulasiController@index');
 // Route::post('/simulasi/processor', 'User\SimulasiController@processor');
-
-Auth::routes();
 
 Route::prefix('user')->group(function () {
     Route::prefix('simulasi')->group(function () {
@@ -158,5 +162,3 @@ Route::prefix('admin')->middleware('auth', 'role:' . User::ADMIN_ROLE)->group(fu
         });
     });
 });
-
-Auth::routes();
