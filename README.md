@@ -1,4 +1,5 @@
-
+## WHAT
+    Tugas Kuliah - Platform yang memungkinkan pengguna untuk dengan mudah merakit konfigurasi PC sesuai dengan kebutuhan.
 
 ## INSTALATION
 
